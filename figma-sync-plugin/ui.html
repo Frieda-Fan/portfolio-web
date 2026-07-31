@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root { font: 12px/1.45 Inter, sans-serif; color: var(--figma-color-text); background: var(--figma-color-bg); }
+      body { margin: 0; padding: 18px; }
+      h1 { margin: 0 0 8px; font-size: 17px; }
+      p { color: var(--figma-color-text-secondary); }
+      .status { min-height: 72px; margin: 16px 0; padding: 12px; border: 1px solid var(--figma-color-border); border-radius: 8px; white-space: pre-wrap; }
+      button { width: 100%; border: 0; border-radius: 7px; padding: 11px 14px; color: var(--figma-color-text-onbrand); background: var(--figma-color-bg-brand); cursor: pointer; font-weight: 600; }
+      button:disabled { opacity: .55; cursor: default; }
+      small { display: block; margin-top: 12px; color: var(--figma-color-text-tertiary); }
+    </style>
+  </head>
+  <body>
+    <h1>Frieda Portfolio Sync</h1>
+    <p>Push tagged text, colors, layout values, and motion timing from this Figma file to the preserved local website.</p>
+    <div class="status" id="status">Start the local bridge, then press Sync.</div>
+    <button id="sync">Sync Figma → website</button>
+    <small>The bridge validates and builds before accepting changes. A failed build restores the previous website configuration.</small>
+    <script>
+      const status = document.getElementById("status");
+      const button = document.getElementById("sync");
+      button.onclick = () => {
+        button.disabled = true;
+        status.textContent = "Reading Figma…";
+        parent.postMessage({ pluginMessage: { type: "sync" } }, "*");
+      };
+      onmessage = async (event) => {
+        const message = event.data.pluginMessage;
+        if (message.type === "status") status.textContent = message.message;
+        if (message.type === "error") { status.textContent = `Error: ${message.message}`; button.disabled = false; }
+        if (message.type === "payload") {
+          status.textContent = "Validating and rebuilding the local website…";
+          try {
+            const response = await fetch("http://127.0.0.1:4175/sync", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(message.payload),
+            });
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.errors?.join("\n") || result.error || "Sync failed");
+            status.textContent = `Synced successfully.\n${result.syncedAt}\nReload http://127.0.0.1:4174/ if it is running in preview mode.`;
+          } catch (error) {
+            status.textContent = `Bridge error: ${error.message}\n\nRun: npm run figma:bridge`;
+          } finally {
+            button.disabled = false;
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

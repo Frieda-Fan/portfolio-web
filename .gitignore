@@ -1,0 +1,34 @@
+# Dependencies and generated output
+node_modules/
+dist/
+tmp/
+playwright-report/
+test-results/
+*.log
+
+# Local Codex/workspace state
+.codex/
+.agents/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Large editable source archives (the optimized runtime media lives in web-assets/)
+*.indd
+portfolio/**
+!portfolio/*.md
+!portfolio/*.json
+
+# Local Figma review captures; authoritative sync metadata remains under portfolio/
+/figma-*.png
+
+# Redundant PNG exports; the website consumes their optimized WebP counterparts
+/public/figma-export/category/*.png
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

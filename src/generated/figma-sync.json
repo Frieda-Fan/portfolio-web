@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "fileKey": "l5lO3iusxMpin1GtDVfYcC",
+    "homeNodeId": "104:2",
+    "mode": "figma-page-142-2",
+    "syncedAt": "2026-07-30T21:54:48.9340227+08:00"
+  },
+  "designSource": {
+    "pageNodeId": "142:2",
+    "pageName": "07 Playable Web Flow · All Desktop",
+    "frameCount": 29,
+    "routeFrames": {
+      "home": "104:2",
+      "about": "105:2",
+      "product-management": "369:290",
+      "installation": "106:2",
+      "architecture": "108:2",
+      "landscape": "107:2"
+    },
+    "cardAssets": {
+      "island-for-the-stateless": "/figma-export/category/island-for-the-stateless.webp",
+      "infinitas-hotel": "/figma-export/category/infinitas-hotel.webp",
+      "countryside-introduction-planning": "/figma-export/category/countryside-introduction-planning.webp",
+      "folded-courtyard": "/figma-export/category/folded-courtyard.webp",
+      "trojan-forest": "/figma-export/category/trojan-forest.webp",
+      "s-o-s": "/figma-export/category/s-o-s.webp",
+      "the-invisible-sisyphus": "/figma-export/category/the-invisible-sisyphus.webp",
+      "the-cloud": "/figma-export/category/the-cloud.webp",
+      "three-body": "/figma-export/category/three-body.webp"
+    },
+    "cardNumbers": {
+      "open-sport-imu": "01",
+      "haqimi": "02",
+      "brain-memory": "03",
+      "human-head-model-system": "04",
+      "folded-courtyard": "01",
+      "island-for-the-stateless": "02",
+      "infinitas-hotel": "03",
+      "countryside-introduction-planning": "04",
+      "trojan-forest": "01",
+      "s-o-s": "02",
+      "the-invisible-sisyphus": "01",
+      "the-cloud": "02",
+      "anti-wastecolonialism": "03",
+      "three-body": "04"
+    },
+    "categoryFrames": {
+      "product-management": {
+        "nodeId": "369:290",
+        "projects": ["open-sport-imu", "haqimi", "brain-memory", "human-head-model-system"]
+      },
+      "architecture": {
+        "nodeId": "108:2",
+        "projects": ["island-for-the-stateless", "infinitas-hotel", "countryside-introduction-planning", "folded-courtyard"]
+      },
+      "landscape": {
+        "nodeId": "107:2",
+        "projects": ["trojan-forest", "s-o-s"]
+      },
+      "installation": {
+        "nodeId": "106:2",
+        "projects": ["the-invisible-sisyphus", "the-cloud", "three-body"]
+      }
+    },
+    "projectFrames": {
+      "open-sport-imu": ["371:298"],
+      "haqimi": ["371:268"],
+      "brain-memory": ["391:274"],
+      "human-head-model-system": ["391:555"],
+      "folded-courtyard": ["129:2", "133:2", "139:2"],
+      "island-for-the-stateless": ["113:2"],
+      "infinitas-hotel": ["111:2"],
+      "countryside-introduction-planning": ["112:2"],
+      "trojan-forest": ["118:2", "121:2", "120:2", "117:2"],
+      "s-o-s": ["109:2"],
+      "anti-wastecolonialism": ["114:2"],
+      "the-cloud": ["115:2"],
+      "three-body": ["116:2"],
+      "the-invisible-sisyphus": ["128:2", "127:2", "131:2", "132:2", "130:2"]
+    }
+  },
+  "site": {
+    "wordmark": "Frieda Hua Fan",
+    "homeEyebrow": "Frieda Hua Fan · work COLLECTION"
+  },
+  "audio": {
+    "enabled": false,
+    "mode": "temporarily-muted"
+  },
+  "categories": {
+    "product-management": {
+      "label": "Product Management",
+      "latin": "Gestio Productorum"
+    },
+    "architecture": {
+      "label": "Architecture",
+      "latin": "Architectūra"
+    },
+    "landscape": {
+      "label": "Landscape",
+      "latin": "Forma Terrae"
+    },
+    "installation": {
+      "label": "Installation",
+      "latin": "Ars in Situ"
+    }
+  },
+  "colors": {
+    "ink": "#07070a",
+    "paper": "#ffffff",
+    "pink": "#ff4a9d",
+    "red": "#ff584d",
+    "yellow": "#f6ea62",
+    "cyan": "#35d9e6",
+    "blue": "#5264ff",
+    "violet": "#9a54ff"
+  },
+  "layout": {
+    "homeSealDesktopMaxPx": 1380,
+    "homeSealMobileVw": 168,
+    "homeIndexDesktopMaxPx": 1240,
+    "desktopBreakpointPx": 800
+  },
+  "motion": {
+    "sealSpinSeconds": 24,
+    "homeSealSpinSeconds": 34,
+    "entrance": {
+      "rotationDegrees": -76,
+      "sealDurationSeconds": 1.65,
+      "unlockAtSeconds": 1.35,
+      "seamDurationSeconds": 0.28,
+      "splitDelaySeconds": 0.2,
+      "splitDurationSeconds": 1.42,
+      "splitDistancePercent": 100.5,
+      "seamFadeDurationSeconds": 0.3,
+      "statusFadeDurationSeconds": 0.25,
+      "sealEase": "power1.inOut",
+      "splitEase": "expo.inOut"
+    },
+    "homeReveal": {
+      "titleDurationSeconds": 0.72,
+      "categoryDurationSeconds": 0.78,
+      "staggerSeconds": 0.1,
+      "offsetYpx": 24,
+      "categoryOffsetYpx": 28,
+      "ease": "power3.out"
+    },
+    "categoryRitual": {
+      "titleDurationSeconds": 0.82,
+      "latinDurationSeconds": 0.4,
+      "holdSeconds": 0.44,
+      "fadeDurationSeconds": 0.48,
+      "titleStartScale": 0.28,
+      "ease": "expo.out"
+    },
+    "projectReveal": {
+      "durationSeconds": 0.62,
+      "staggerSeconds": 0.12,
+      "offsetYpx": 28,
+      "startScale": 0.94,
+      "ease": "power3.out"
+    }
+  }
+}

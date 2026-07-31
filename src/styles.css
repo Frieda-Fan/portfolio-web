@@ -1,0 +1,589 @@
+:root {
+  color-scheme: dark;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-synthesis: none;
+  --ink: #07070a;
+  --paper: #ffffff;
+  --pink: #ff4a9d;
+  --red: #ff584d;
+  --yellow: #f6ea62;
+  --cyan: #35d9e6;
+  --blue: #5264ff;
+  --violet: #9a54ff;
+  --sync-seal-spin: 24s;
+  --sync-home-seal-spin: 34s;
+  --sync-home-seal-max: 1380px;
+  --sync-home-seal-mobile: 168vw;
+  --sync-home-index-max: 1240px;
+  --hairline-dark: rgba(255, 255, 255, 0.22);
+  --hairline-light: rgba(7, 7, 10, 0.22);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: var(--ink); color: white; }
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: .12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+img { display: block; max-width: 100%; }
+
+::view-transition-old(root) { animation: page-out .34s cubic-bezier(.55, 0, 1, .45) both; }
+::view-transition-new(root) { animation: page-in .58s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes page-out { to { opacity: 0; filter: blur(10px); transform: scale(.985); } }
+@keyframes page-in { from { opacity: 0; filter: blur(12px); transform: scale(1.012); } }
+
+.site-chrome {
+  position: absolute;
+  z-index: 30;
+  inset: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 32px;
+  color: white;
+}
+.site-chrome--light { color: #0c0b0d; }
+.wordmark { font: 500 14px/1 "Unbounded", sans-serif; letter-spacing: .04em; }
+.site-chrome nav { display: flex; gap: 24px; font: 500 10px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .09em; }
+.site-chrome__right { display: flex; align-items: center; gap: 22px; }
+.info-link { font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+.sound-toggle { border: 0; padding: 0; color: inherit; background: transparent; cursor: pointer; font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+.sound-toggle span { margin-right: 6px; color: var(--pink); }
+.sound-toggle:disabled { cursor: default; opacity: .72; }
+.site-chrome nav a { position: relative; }
+.site-chrome nav a::after { content: ""; position: absolute; left: 0; bottom: -7px; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .35s; }
+.site-chrome nav a:hover::after, .site-chrome nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+.eyebrow { font: 500 10px/1.4 "IBM Plex Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+
+.magic-seal { position: relative; display: block; width: 100%; aspect-ratio: 1; overflow: visible; filter: drop-shadow(0 0 8px rgba(255, 60, 90, .55)) drop-shadow(0 0 12px rgba(35, 217, 230, .35)); }
+.magic-seal--compact { width: 180px; }
+.magic-seal .seal-ring { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; will-change: transform; animation: seal-spin-left var(--sync-seal-spin) linear infinite; }
+@keyframes seal-spin-left { to { transform: rotate(-360deg); } }
+
+.home-entrance { position: fixed; z-index: 100; inset: 0; overflow: hidden; pointer-events: none; }
+.entrance-panel { position: absolute; top: 0; bottom: 0; width: 50.1%; overflow: hidden; background: #000; will-change: transform; }
+.entrance-panel--left { left: 0; }
+.entrance-panel--right { right: 0; }
+.entrance-seal-rotor { position: absolute; top: 50%; width: min(96vw, 1380px); aspect-ratio: 1; transform: translate(-50%, -50%); transform-origin: 50% 50%; will-change: transform, opacity; }
+.entrance-seal-rotor img { width: 100%; height: 100%; object-fit: contain; }
+.entrance-panel--left .entrance-seal-rotor { left: 100%; }
+.entrance-panel--right .entrance-seal-rotor { left: 0; }
+.entrance-seam { position: absolute; z-index: 3; left: 50%; top: 10%; bottom: 10%; width: 1px; transform-origin: 50% 50%; background: linear-gradient(transparent, var(--cyan), white 48%, var(--red), transparent); box-shadow: 0 0 18px rgba(255,255,255,.75), 0 0 38px rgba(53,217,230,.5); }
+.entrance-status { position: absolute; z-index: 4; left: 50%; bottom: 28px; margin: 0; transform: translateX(-50%); color: rgba(255,255,255,.6); font: 10px/1 "IBM Plex Mono", monospace; letter-spacing: .18em; white-space: nowrap; }
+.sound-gate { min-height: 100svh; display: grid; grid-template-columns: 1fr 1.25fr; align-items: center; gap: 6vw; padding: 9vw; background: #020204; }
+.sound-gate > .magic-seal { justify-self: end; width: min(34vw, 430px); opacity: .82; }
+.sound-gate h1 { margin: 12px 0 22px; font: 400 clamp(54px, 7vw, 112px)/.9 "Bodoni Moda", serif; letter-spacing: -.05em; }
+.sound-gate div > p:not(.eyebrow) { max-width: 500px; color: rgba(255,255,255,.6); line-height: 1.5; }
+.sound-gate__actions { display: flex; gap: 12px; margin-top: 30px; }
+.sound-gate__actions button { border: 1px solid var(--hairline-dark); padding: 13px 16px; color: white; background: transparent; cursor: pointer; font: 500 10px/1 "IBM Plex Mono", monospace; text-transform: uppercase; }
+.sound-gate__actions button:first-child { color: #09070c; background: linear-gradient(90deg, var(--pink), var(--yellow), var(--cyan)); border-color: transparent; }
+
+.home {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 96px 32px 30px;
+  background: #020204;
+}
+.home-seal-backdrop { position: absolute; z-index: 1; left: 50%; top: 50%; width: min(96vw, var(--sync-home-seal-max)); transform: translate(-50%, -50%); opacity: .76; }
+.home-seal-backdrop .seal-ring { animation-duration: var(--sync-home-seal-spin); }
+.home-title-lockup { position: relative; z-index: 4; width: min(var(--sync-home-index-max), 94vw); text-align: center; }
+.home-title-lockup > .eyebrow { margin: 0 0 28px; color: rgba(255,255,255,.64); }
+.category-index { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: center; gap: clamp(8px, 1.1vw, 18px); }
+.category-link { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 9px; padding: 20px 6px; color: white; text-align: center; text-shadow: 0 0 24px rgba(0,0,0,.95), 0 0 10px rgba(0,0,0,.9); }
+.category-link span, .category-link em { color: rgba(255,255,255,.7); font: 500 9px/1.3 "IBM Plex Mono", monospace; font-style: normal; text-transform: uppercase; }
+.category-link strong { color: white; font: 500 clamp(18px, 2.5vw, 42px)/1 "Unbounded", sans-serif; letter-spacing: -.045em; transition: color .3s, transform .3s, filter .3s; }
+.category-link--product-management strong { max-width: 330px; font-size: clamp(17px, 2.05vw, 34px); }
+.category-link:hover strong { color: var(--pink); transform: translateY(-7px); filter: drop-shadow(0 4px 14px rgba(255,74,157,.62)); }
+
+.category-page { position: relative; min-height: 100svh; overflow: hidden; background: #020204; padding: 110px 32px 36px; }
+.category-ritual { position: fixed; inset: 0; display: grid; place-items: center; background: #000; text-align: center; }
+.category-ritual > .magic-seal { position: absolute; width: min(72vw, 720px); opacity: .22; }
+.ritual-title-group { position: relative; z-index: 2; }
+.ritual-title { margin: 0; font: 500 clamp(52px, 11vw, 170px)/.88 "Unbounded", sans-serif; letter-spacing: -.06em; }
+.ritual-latin { margin: 22px 0 0; font: italic 400 23px/1 "Bodoni Moda", serif; color: var(--pink); }
+.category-heading { position: relative; z-index: 3; display: block; }
+.category-heading h1 { margin: 16px 0 0; font: 500 clamp(54px, 6.667vw, 96px)/1.275 "Unbounded", sans-serif; letter-spacing: -.105em; }
+.category-page--product-management .category-heading h1 { max-width: 850px; line-height: .92; }
+.category-project-grid { position: absolute; z-index: 2; box-sizing: border-box; top: 311px; left: 0; width: 100%; min-height: 697px; margin: 0; padding: 0 54px 43px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 313px; align-content: start; gap: 28px 52px; }
+.category-project-grid--landscape { top: 313px; min-height: 473px; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 430px; }
+.category-page--product-management { min-height: 1310px; }
+.category-project-grid--product-management { top: 390px; min-height: 888px; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 430px; }
+.project-sigil { min-width: 0; color: white; }
+.project-sigil__image { position: relative; height: 207px; overflow: hidden; background: #120e1c; }
+.project-sigil__image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.82) contrast(1.05); transition: transform .6s, filter .6s; }
+.project-sigil--brain-memory .project-sigil__image img { object-fit: contain; }
+.project-sigil__image span { position: absolute; left: 12px; bottom: 10px; padding: 4px 7px; background: #f5efdf; font: 10px/1 "IBM Plex Mono", monospace; }
+.project-sigil strong { display: block; margin-top: 10px; font: 500 clamp(13px, 1.25vw, 19px)/1.05 "Unbounded", sans-serif; }
+.project-sigil em { display: block; margin-top: 6px; font: 9px/1.3 "IBM Plex Mono", monospace; font-style: normal; }
+.project-sigil:hover img { transform: scale(1.05) rotate(.5deg); filter: saturate(1.25) contrast(1.05); }
+.spread-controls { display: flex; justify-content: center; gap: 20px; align-items: center; margin-top: 15px; font: 10px/1 "IBM Plex Mono", monospace; text-transform: uppercase; }
+.spread-controls button { border: 1px solid var(--hairline-dark); padding: 10px 14px; color: white; background: transparent; cursor: pointer; }
+.spread-controls button:disabled { opacity: .3; cursor: default; }
+
+.project-page { --bg: var(--ink); --fg: white; --muted: rgba(255,255,255,.6); --line: var(--hairline-dark); min-height: 100vh; background: var(--bg); color: var(--fg); }
+.project-page.theme-ivory { color-scheme: light; --bg: var(--paper); --fg: #0c0b0d; --muted: rgba(12,11,13,.63); --line: var(--hairline-light); }
+.project-hero { min-height: 100svh; display: grid; grid-template-columns: 5fr 7fr; padding: 112px 32px 32px; gap: 42px; align-items: end; }
+.project-hero__copy { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; }
+.back-link { align-self: flex-start; margin-bottom: auto; font: 500 10px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
+.project-hero h1 { margin: 32px 0 20px; max-width: 700px; font: 500 clamp(54px, 7.4vw, 126px)/.85 "Unbounded", sans-serif; letter-spacing: -.065em; }
+.project-subtitle { max-width: 590px; margin: 0; font: 400 clamp(18px, 2vw, 29px)/1.15 "Bodoni Moda", serif; color: var(--muted); }
+.project-hero dl { margin: 50px 0 0; border-top: 1px solid var(--line); }
+.project-hero dl div { display: grid; grid-template-columns: 90px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); font: 10px/1.4 "IBM Plex Mono", monospace; }
+.project-hero dt { color: var(--muted); text-transform: uppercase; }
+.project-hero dd { margin: 0; }
+.project-hero__media { position: relative; align-self: stretch; min-height: 62vh; margin: 0; overflow: hidden; }
+.project-hero__media img { width: 100%; height: 100%; object-fit: cover; }
+.project-hero__media figcaption { position: absolute; right: 20px; bottom: 18px; max-width: 310px; padding: 7px 9px; color: white; background: rgba(0,0,0,.72); font: 9px/1.35 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .04em; }
+.project-intro { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; padding: 140px 32px 190px; border-top: 1px solid var(--line); }
+.project-intro > .eyebrow { grid-column: 1 / 3; }
+.project-intro h2 { grid-column: 3 / 11; margin: 0; font: 400 clamp(34px, 4.8vw, 74px)/1.04 "Bodoni Moda", serif; letter-spacing: -.025em; }
+.project-intro__body { grid-column: 7 / 11; margin-top: 70px; font-size: 16px; line-height: 1.6; color: var(--muted); }
+.project-gallery { padding-bottom: 100px; }
+.media-block { margin-bottom: 160px; }
+.media-chapter { width: calc(100% - 64px); margin: 0 32px 160px; }
+.media-chapter--narrow { width: 62%; margin-left: 19%; }
+.media-chapter--offset { width: 72%; margin-left: 24%; }
+.media-chapter img { width: 100%; max-height: 92vh; object-fit: contain; background: rgba(127,127,127,.05); }
+.media-chapter--figma-full { width: 100%; margin: 0; }
+.media-chapter--figma-full img {
+  width: 100%;
+  max-height: none;
+  aspect-ratio: 1440 / 1019;
+  object-fit: cover;
+  background: transparent;
+}
+.project-page--haqimi .project-hero,
+.project-page--open-sport-imu .project-hero,
+.project-page--brain-memory .project-hero,
+.project-page--human-head-model-system .project-hero {
+  min-height: 1000px;
+  grid-template-columns: 5fr 7fr;
+  align-items: stretch;
+  padding-top: 112px;
+}
+.project-page--haqimi .project-hero__copy,
+.project-page--open-sport-imu .project-hero__copy,
+.project-page--brain-memory .project-hero__copy,
+.project-page--human-head-model-system .project-hero__copy {
+  justify-content: flex-start;
+  padding-top: 8px;
+}
+.project-page--haqimi .back-link,
+.project-page--open-sport-imu .back-link,
+.project-page--brain-memory .back-link,
+.project-page--human-head-model-system .back-link { margin-bottom: 50px; }
+.project-page--haqimi .project-hero h1,
+.project-page--open-sport-imu .project-hero h1,
+.project-page--brain-memory .project-hero h1,
+.project-page--human-head-model-system .project-hero h1 {
+  margin: 0 0 44px;
+  font-size: clamp(54px, 4.583vw, 66px);
+  line-height: 1;
+  letter-spacing: -.045em;
+}
+.project-page--brain-memory .project-hero h1 { white-space: pre-line; }
+.project-page--haqimi .project-subtitle,
+.project-page--open-sport-imu .project-subtitle,
+.project-page--brain-memory .project-subtitle,
+.project-page--human-head-model-system .project-subtitle {
+  max-width: 530px;
+  font: 400 24px/1.45 "IBM Plex Sans", sans-serif;
+}
+.project-page--haqimi .project-hero dl,
+.project-page--open-sport-imu .project-hero dl,
+.project-page--brain-memory .project-hero dl,
+.project-page--human-head-model-system .project-hero dl { margin-top: auto; }
+.project-page--haqimi .project-hero__media,
+.project-page--open-sport-imu .project-hero__media,
+.project-page--brain-memory .project-hero__media,
+.project-page--human-head-model-system .project-hero__media { min-height: 856px; }
+.project-page--haqimi .project-intro,
+.project-page--open-sport-imu .project-intro,
+.project-page--brain-memory .project-intro,
+.project-page--human-head-model-system .project-intro {
+  min-height: 760px;
+  box-sizing: border-box;
+  padding-top: 108px;
+  padding-bottom: 90px;
+}
+.project-page--haqimi .project-intro h2,
+.project-page--open-sport-imu .project-intro h2,
+.project-page--brain-memory .project-intro h2,
+.project-page--human-head-model-system .project-intro h2 {
+  grid-column: 3 / 11;
+  font: 500 clamp(34px, 3.056vw, 44px)/1.12 "Unbounded", sans-serif;
+  letter-spacing: -.035em;
+}
+.project-page--haqimi .project-intro__body,
+.project-page--open-sport-imu .project-intro__body,
+.project-page--brain-memory .project-intro__body,
+.project-page--human-head-model-system .project-intro__body {
+  grid-column: 7 / 11;
+  margin-top: 28px;
+}
+.project-page--haqimi .project-gallery,
+.project-page--open-sport-imu .project-gallery,
+.project-page--brain-memory .project-gallery,
+.project-page--human-head-model-system .project-gallery { padding-bottom: 0; }
+.media-chapter--product-case {
+  width: 100%;
+  margin: 0 0 36px;
+  overflow: hidden;
+}
+.media-chapter--product-case img {
+  display: block;
+  width: 100%;
+  max-height: none;
+  object-fit: contain;
+  background: #010102;
+}
+.project-page--haqimi .project-conclusion,
+.project-page--open-sport-imu .project-conclusion,
+.project-page--brain-memory .project-conclusion,
+.project-page--human-head-model-system .project-conclusion {
+  min-height: 620px;
+  box-sizing: border-box;
+  padding-top: 88px;
+}
+.project-page--haqimi .project-conclusion h2,
+.project-page--open-sport-imu .project-conclusion h2,
+.project-page--brain-memory .project-conclusion h2,
+.project-page--human-head-model-system .project-conclusion h2 {
+  font: 500 clamp(34px, 2.917vw, 42px)/1.15 "Unbounded", sans-serif;
+}
+.project-page--trojan-forest .project-hero__media img {
+  position: absolute;
+  top: -13.47%;
+  left: -76.44%;
+  width: 176.48%;
+  height: 113.47%;
+  max-width: none;
+  max-height: none;
+  object-fit: fill;
+}
+.media-chapter--trojan {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+.media-chapter--trojan img {
+  width: 100%;
+  max-height: none;
+  aspect-ratio: 1440 / 1019;
+  object-fit: cover;
+  background: transparent;
+}
+.media-chapter--trojan-3 {
+  height: min(73.125vw, 1053px);
+  padding-top: min(.833vw, 12px);
+}
+.media-chapter--trojan-3 img {
+  width: 106.07%;
+  height: min(72.917vw, 1050px);
+  margin-left: -3.01%;
+  object-fit: fill;
+}
+.project-page--island-for-the-stateless .project-hero {
+  grid-template-columns: minmax(0, 568.81fr) minmax(0, 765.19fr);
+}
+.project-page--island-for-the-stateless .project-hero h1 {
+  width: 611px;
+  max-width: 100%;
+  margin: 0 0 99px;
+  white-space: pre-line;
+  font-size: 96px;
+  line-height: .9435;
+  letter-spacing: -6.9264px;
+}
+.project-page--island-for-the-stateless .project-hero__media img {
+  position: absolute;
+  top: -11.67%;
+  left: 0;
+  width: 100%;
+  height: 111.69%;
+  max-height: none;
+  object-fit: cover;
+}
+.media-chapter--island {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.media-chapter--island img {
+  display: block;
+  max-height: none;
+  background: transparent;
+}
+.media-chapter--island-1 {
+  width: 100%;
+  height: min(65.556vw, 944px);
+  margin: 0;
+  padding: 0 32px;
+}
+.media-chapter--island-1 img {
+  width: 100%;
+  height: min(56.389vw, 812px);
+  object-fit: cover;
+}
+.media-chapter--island-1 .media-caption {
+  margin-top: 12px;
+}
+.media-chapter--island-2 {
+  width: 100%;
+  height: min(86.944vw, 1252px);
+  margin: 0;
+  padding: 0 32px;
+}
+.media-chapter--island-2 img {
+  width: 100.81%;
+  height: 76.38%;
+  margin-left: -.01%;
+  object-fit: fill;
+}
+.media-chapter--island-3 {
+  z-index: 1;
+  width: calc(100% - 64px);
+  height: min(26.875vw, 387px);
+  margin: max(-25vw, -360px) 32px 0;
+}
+.media-chapter--island-3 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media-chapter--island-4 {
+  width: calc(100% - 68px);
+  height: min(66.111vw, 952px);
+  margin: min(2.986vw, 43px) 34px 0;
+}
+.media-chapter--island-4 img {
+  position: absolute;
+  top: -25.11%;
+  left: -27.16%;
+  width: 148.89%;
+  height: 147.95%;
+  object-fit: fill;
+}
+.media-chapter--island-5 {
+  width: calc(100% - 74px);
+  height: min(67.569vw, 973px);
+  margin: min(5.833vw, 84px) 37px min(3.681vw, 53px);
+}
+.media-chapter--island-5 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.project-closing-media {
+  margin: 0;
+}
+.project-closing-media--island {
+  width: 100%;
+  height: min(72.292vw, 1041px);
+  overflow: hidden;
+}
+.project-closing-media--island img {
+  display: block;
+  width: 100%;
+  height: min(70.694vw, 1018px);
+  transform: translateY(min(-1.001vw, -14.41px));
+  object-fit: cover;
+}
+.media-chapter--folded {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+.media-chapter--folded img { max-height: none; background: transparent; }
+.media-chapter--folded-1 { height: min(65.556vw, 944px); }
+.media-chapter--folded-1 img { width: 114.583%; height: min(74.028vw, 1066px); margin-left: -7.083%; object-fit: cover; }
+.media-chapter--folded-1 .media-caption { position: absolute; z-index: 2; top: 0; left: 32px; right: 32px; margin: 0; }
+.media-chapter--folded-2 { height: min(68.681vw, 989px); padding-top: min(9.375vw, 135px); }
+.media-chapter--folded-2 img { width: 100%; height: min(63.958vw, 921px); object-fit: cover; }
+.media-chapter--folded-3 { height: min(76.667vw, 1104px); padding: min(11.111vw, 160px) 32px min(1.667vw, 24px); }
+.media-chapter--folded-3 img { height: min(63.889vw, 920px); object-fit: contain; }
+.media-chapter--folded-4 { height: min(72.986vw, 1051px); }
+.media-chapter--folded-4 img { width: 100%; height: min(68.194vw, 982px); object-fit: contain; }
+.media-chapter--folded-5 { height: min(68.958vw, 993px); padding: 0 32px min(5.069vw, 73px); }
+.media-chapter--folded-5 img { height: min(63.889vw, 920px); object-fit: contain; }
+.media-chapter--folded-6 { height: min(70.208vw, 1011px); }
+.media-chapter--folded-6 img { height: min(66.528vw, 958px); object-fit: contain; }
+.media-chapter--folded-7 { height: min(63.889vw, 920px); padding: 0 32px; }
+.media-chapter--folded-7 img { height: min(63.889vw, 920px); object-fit: contain; }
+.media-chapter--folded-8 { height: min(76.806vw, 1106px); padding-top: min(9.028vw, 130px); }
+.media-chapter--folded-8 img { width: 72%; height: min(63.889vw, 920px); margin-left: 13.125%; object-fit: contain; }
+.media-chapter--folded-9 { height: min(65.208vw, 939px); padding: min(1.458vw, 21px) 29px 0; }
+.media-chapter--folded-9 img { height: min(63.889vw, 920px); object-fit: cover; }
+.project-page--folded-courtyard .project-hero { grid-template-columns: minmax(0, 620.08fr) minmax(0, 713.92fr); }
+.project-page--folded-courtyard .project-intro > .eyebrow { visibility: hidden; }
+.media-caption { display: grid; grid-template-columns: 55px 1fr auto; gap: 14px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); font: 10px/1.3 "IBM Plex Mono", monospace; text-transform: uppercase; }
+.media-caption span, .media-caption em { color: var(--muted); font-style: normal; }
+.media-matrix { width: calc(100% - 64px); margin: 0 32px 160px; }
+.media-matrix__grid { display: grid; grid-template-columns: repeat(var(--matrix-columns), minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 22px); align-items: stretch; }
+.media-matrix__item { min-width: 0; min-height: 0; margin: 0; display: grid; place-items: center; background: rgba(127,127,127,.05); }
+.media-matrix__item img { width: 100%; height: 100%; max-height: 48vh; object-fit: contain; }
+.project-conclusion { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; padding: 80px 32px 170px; border-top: 1px solid var(--line); }
+.project-conclusion .eyebrow { grid-column: 1 / 3; }
+.project-conclusion h2 { grid-column: 3 / 11; margin: 0; font: 400 clamp(36px, 5vw, 78px)/1.03 "Bodoni Moda", serif; letter-spacing: -.03em; }
+.project-footer { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+.project-footer a { min-height: 190px; padding: 30px 32px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); }
+.project-footer a:last-child { border-right: 0; text-align: right; }
+.project-footer a:nth-child(2) { text-align: center; }
+.project-footer span { font: 10px/1 "IBM Plex Mono", monospace; color: var(--muted); text-transform: uppercase; }
+.project-footer strong { font: 500 clamp(14px, 2vw, 28px)/1.05 "Unbounded", sans-serif; }
+
+.about-page { position: relative; min-height: 100svh; overflow: hidden; padding: 128px 32px 0; color: #0c0b0d; background: var(--paper); }
+.about-page .site-chrome { color: #0c0b0d; }
+.about-hero { position: relative; z-index: 2; min-height: 66svh; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 70px; }
+.about-hero h1 { max-width: 1180px; margin: 0; font: 400 clamp(54px, 8.2vw, 140px)/.88 "Bodoni Moda", serif; letter-spacing: -.055em; }
+.about-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 2fr 5fr; gap: 100px 24px; padding: 110px 0 160px; border-top: 1px solid var(--hairline-light); }
+.about-biography { max-width: 890px; display: grid; grid-template-columns: 1fr 1fr; gap: 44px; font-size: clamp(18px, 2vw, 27px); line-height: 1.4; }
+.about-biography p { margin: 0; }
+.experience-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--hairline-light); }
+.experience-list li { display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid var(--hairline-light); }
+.experience-list span { font: 10px/1.4 "IBM Plex Mono", monospace; color: rgba(12,11,13,.54); }
+.experience-list strong { font: 500 clamp(15px, 1.55vw, 23px)/1.2 "Unbounded", sans-serif; }
+.about-footer { position: relative; z-index: 2; display: flex; justify-content: space-between; gap: 24px; padding: 24px 0 28px; border-top: 1px solid var(--hairline-light); font: 10px/1.3 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+.about-footer p { margin: 0; }
+
+@media (max-width: 800px) {
+  .site-chrome { padding: 20px 18px; }
+  .site-chrome nav { gap: 11px; }
+  .site-chrome nav a { font-size: 8px; }
+  .site-chrome__right { gap: 11px; }
+  .info-link { font-size: 8px; }
+  .sound-toggle { width: 14px; overflow: hidden; white-space: nowrap; font-size: 0; }
+  .sound-toggle span { margin: 0; font-size: 9px; }
+  .sound-gate { display: flex; flex-direction: column; justify-content: center; align-items: stretch; padding: 70px 18px 30px; }
+  .sound-gate > .magic-seal { align-self: center; width: min(64vw, 270px); margin-bottom: 45px; }
+  .sound-gate__actions { flex-direction: column; }
+  .home { display: block; padding: 96px 18px 24px; }
+  .home-seal-backdrop { width: var(--sync-home-seal-mobile); }
+  .home-title-lockup { position: absolute; left: 50%; top: 50%; width: calc(100% - 24px); transform: translate(-50%, -50%); }
+  .home-title-lockup > .eyebrow { margin-bottom: 18px; font-size: 7px; }
+  .category-index { gap: 1%; }
+  .category-link { gap: 4px; padding: 12px 2px; }
+  .category-link strong { font-size: clamp(8px, 2.45vw, 12px); letter-spacing: -.06em; }
+  .category-link--product-management strong { font-size: clamp(7px, 2.15vw, 10px); }
+  .category-link span, .category-link em { font-size: 7px; }
+  .entrance-seal-rotor { width: var(--sync-home-seal-mobile); }
+  .category-page { padding: 90px 18px 30px; min-height: 100svh; }
+  .category-heading h1 { font-size: clamp(44px, 12vw, 75px); }
+  .category-project-grid, .category-project-grid--landscape, .category-project-grid--product-management { position: relative; top: auto; left: auto; width: 100%; min-height: 500px; margin-top: 54px; padding: 52px 0 30px; gap: 28px 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: min-content; }
+  .project-sigil__image { height: auto; aspect-ratio: 1.9; }
+  .project-sigil strong { font-size: 10px; }
+  .project-sigil em { display: none; }
+  .project-hero { min-height: auto; display: flex; flex-direction: column; padding: 95px 18px 60px; gap: 38px; align-items: stretch; }
+  .project-hero__copy { min-height: 67svh; }
+  .project-hero h1 { font-size: clamp(44px, 13vw, 80px); }
+  .project-hero__media { min-height: 58svh; }
+  .project-intro { display: block; padding: 90px 18px 120px; }
+  .project-intro h2 { margin-top: 25px; font-size: clamp(31px, 9vw, 52px); }
+  .project-intro__body { margin-top: 55px; }
+  .media-chapter, .media-chapter--narrow, .media-chapter--offset, .media-matrix { width: calc(100% - 36px); margin: 0 18px 100px; }
+  .media-chapter--figma-full { width: 100%; margin: 0; }
+  .project-page--island-for-the-stateless .project-hero { grid-template-columns: 1fr; }
+  .project-page--island-for-the-stateless .project-hero h1 {
+    width: auto;
+    margin: 32px 0 20px;
+    white-space: normal;
+    font-size: clamp(44px, 13vw, 80px);
+    line-height: .85;
+    letter-spacing: -.065em;
+  }
+  .project-page--island-for-the-stateless .project-hero__media img {
+    position: static;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .project-page--trojan-forest .project-hero__media img {
+    position: static;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .media-chapter--trojan,
+  .media-chapter--trojan-3 {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .media-chapter--trojan img,
+  .media-chapter--trojan-3 img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    object-fit: contain;
+  }
+  .media-chapter--island {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0 18px 48px;
+    overflow: visible;
+  }
+  .media-chapter--island img {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    object-fit: contain;
+  }
+  .media-chapter--island-1 .media-caption { margin-top: 10px; }
+  .project-closing-media--island { height: auto; }
+  .project-closing-media--island img {
+    width: 100%;
+    height: auto;
+    transform: none;
+    object-fit: contain;
+  }
+  .media-chapter--folded { width: 100%; margin: 0; height: auto; padding: 0; }
+  .media-chapter--folded img { width: 100%; height: auto; margin: 0; object-fit: contain; }
+  .media-chapter--folded-1 .media-caption { position: static; margin: 10px 18px 0; }
+  .media-caption { grid-template-columns: 32px 1fr; }
+  .media-caption em { display: none; }
+  .media-matrix__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .media-matrix__item img { max-height: 34vh; }
+  .project-conclusion { display: block; padding: 70px 18px 110px; }
+  .project-conclusion h2 { margin-top: 26px; font-size: clamp(34px, 9.5vw, 54px); }
+  .project-footer { grid-template-columns: 1fr; }
+  .project-footer a { min-height: 120px; border-right: 0; border-bottom: 1px solid var(--line); text-align: left !important; }
+  .about-page { padding: 104px 18px 0; }
+  .about-hero { min-height: 70svh; padding-bottom: 45px; }
+  .about-hero h1 { font-size: clamp(48px, 14vw, 78px); }
+  .about-grid { display: block; padding: 80px 0 110px; }
+  .about-grid > .eyebrow, .about-grid > div > .eyebrow { margin-bottom: 28px; }
+  .about-biography { display: block; margin-bottom: 90px; font-size: 20px; }
+  .about-biography p + p { margin-top: 28px; }
+  .experience-list { margin-top: 28px; }
+  .experience-list li { grid-template-columns: 35px 1fr; }
+  .experience-list strong { font-size: 14px; }
+  .about-footer { flex-direction: column; }
+}
+
+@media (max-width: 540px) {
+  .site-chrome .wordmark { display: none; }
+  .site-chrome__right { width: 100%; justify-content: space-between; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+  .magic-seal .seal-ring { animation: none !important; }
+}

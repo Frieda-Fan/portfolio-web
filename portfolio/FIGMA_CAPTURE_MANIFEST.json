@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "baseUrl": "http://127.0.0.1:4174",
+  "captureQuery": "capture=1",
+  "notes": [
+    "capture=1 bypasses the sound gate, five-second intro, category ritual, and scroll-entry concealment only for Figma import.",
+    "Installation leaf 2 uses leaf=2.",
+    "Normal visitor URLs remain unchanged and always play the complete intro."
+  ],
+  "desktop": [
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "00 · Home · Rotating Seal / Horizontal Index", "nodeId": "104:2", "path": "/?capture=1", "width": 1410, "height": 905, "expectedImages": 1 },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "04 · About / Info", "nodeId": "105:2", "path": "/about?capture=1", "width": 1440, "height": 1000, "expectedImages": 0 },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "01 · Architecture Index", "nodeId": "108:2", "path": "/architecture?capture=1", "width": 1440, "height": 1008, "expectedImages": 4 },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "02 · Landscape Index", "nodeId": "107:2", "path": "/landscape?capture=1", "width": 1440, "height": 1008, "expectedImages": 2 },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "03 · Installation Index", "nodeId": "106:2", "path": "/installation?capture=1", "width": 1440, "height": 1008, "expectedImages": 3 },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "A01 · Folded Courtyard", "nodeId": "129:2", "path": "/projects/folded-courtyard?capture=1", "width": 1440, "height": "content", "expectedImages": 10, "theme": "ivory" },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "A02 · Island for the Stateless · Full Detail", "nodeId": "113:2", "path": "/projects/island-for-the-stateless?capture=1", "width": 1440, "height": "content", "expectedImages": 7, "theme": "ivory" },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "A04 · Countryside Introduction Planning", "nodeId": "112:2", "path": "/projects/countryside-introduction-planning?capture=1", "width": 1440, "height": "content", "expectedImages": 3, "theme": "ivory" },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "L01 · Trojan Forest", "nodeId": "118:2", "path": "/projects/trojan-forest?capture=1", "width": 1440, "height": "content", "expectedImages": 6, "theme": "ivory" },
+    { "page": "09 — Project Pages / Dark", "frame": "Project / Infinitas Hotel / Dark", "path": "/projects/infinitas-hotel?capture=1", "width": 1440, "height": "content", "expectedImages": 14, "theme": "dark" },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "L02 · SOS · Full Detail", "nodeId": "109:2", "path": "/projects/s-o-s?capture=1", "width": 1440, "height": "content", "expectedImages": 5, "theme": "dark" },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "I01 · The Invisible Sisyphus", "nodeId": "128:2", "path": "/projects/the-invisible-sisyphus?capture=1", "width": 1440, "height": "content", "expectedImages": 8, "theme": "dark" },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "I02 · The Cloud · Full Detail", "nodeId": "115:2", "path": "/projects/the-cloud?capture=1", "width": 1440, "height": "content", "expectedImages": 5, "theme": "dark" },
+    { "page": "09 — Project Pages / Dark", "frame": "Project / Anti-Wastecolonialism / Dark", "path": "/projects/anti-wastecolonialism?capture=1", "width": 1440, "height": "content", "expectedImages": 5, "theme": "dark" },
+    { "page": "07 Playable Web Flow · All Desktop", "frame": "I04 · Three Body · Full Detail", "nodeId": "116:2", "path": "/projects/three-body?capture=1", "width": 1440, "height": "content", "expectedImages": 4, "theme": "dark", "requiresDisclosure": true }
+  ],
+  "mobile": [
+    { "page": "10 — Mobile", "frame": "Mobile / Home", "path": "/?capture=1", "width": 390, "height": 844 },
+    { "page": "10 — Mobile", "frame": "Mobile / Info", "path": "/about?capture=1", "width": 390, "height": 844 },
+    { "page": "10 — Mobile", "frame": "Mobile / Architecture Index", "path": "/architecture?capture=1", "width": 390, "height": 844 },
+    { "page": "10 — Mobile", "frame": "Mobile / Landscape Index", "path": "/landscape?capture=1", "width": 390, "height": 844 },
+    { "page": "10 — Mobile", "frame": "Mobile / Installation", "path": "/installation?capture=1", "width": 390, "height": 844 },
+    { "page": "10 — Mobile", "frame": "Mobile / Folded Courtyard", "path": "/projects/folded-courtyard?capture=1", "width": 390, "height": "content" },
+    { "page": "10 — Mobile", "frame": "Mobile / Infinitas Hotel", "path": "/projects/infinitas-hotel?capture=1", "width": 390, "height": "content" },
+    { "page": "10 — Mobile", "frame": "Mobile / The Cloud", "path": "/projects/the-cloud?capture=1", "width": 390, "height": "content" },
+    { "page": "10 — Mobile", "frame": "Mobile / Three Body", "path": "/projects/three-body?capture=1", "width": 390, "height": "content", "requiresDisclosure": true }
+  ]
+}

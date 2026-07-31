@@ -1,0 +1,56 @@
+{
+  "runId": "portfolio-components-2026-07-22",
+  "fileKey": "l5lO3iusxMpin1GtDVfYcC",
+  "status": "paused_figma_usage_limit",
+  "phase": "P2_instance_migration",
+  "foundations": {
+    "validated": true,
+    "wordmarkVariableId": "VariableID:218:2",
+    "wordmarkValue": "Frieda Fan"
+  },
+  "components": {
+    "wordmarkDesktop": "278:2",
+    "wordmarkMobile": "280:2",
+    "soundToggleDesktop": "284:5",
+    "soundToggleMobile": "287:14",
+    "pagination": "289:8",
+    "backLink": "293:2",
+    "disciplineDesktop": "294:161",
+    "disciplineMobile": "294:189",
+    "primaryNavigationMobile": "294:204",
+    "projectCardDesktop": "294:231",
+    "projectCardMobile": "297:18",
+    "projectFooterDesktop": "298:400",
+    "projectFooterMobile": "298:559",
+    "returnHomeMobile": "298:562",
+    "disciplineReview": "298:660"
+  },
+  "migration": {
+    "desktop": "wordmark_sound_pagination_back_discipline_project_cards_project_footer_complete",
+    "mobile": "wordmark_sound_pagination_back_discipline_primary_nav_project_cards_project_footer_complete",
+    "review": "wordmark_sound_pagination_back_project_cards_project_footer_complete_discipline_pending"
+  },
+  "migrationCounts": {
+    "wordmark": 40,
+    "soundToggle": 41,
+    "pagination": 10,
+    "backLink": 16,
+    "discipline": 6,
+    "primaryNavigation": 3,
+    "projectCard": 28,
+    "projectFooter": 46,
+    "returnHome": 1
+  },
+  "remaining": [
+    "Replace 3 Review Discipline Card frames with instances of 298:660",
+    "Create and migrate Review Sound Gate Choice component set (2 choices)",
+    "Run full instance/reaction-count validation and page screenshots"
+  ],
+  "validation": {
+    "prototypeReactionsBefore": {
+      "desktop": 54,
+      "mobile": 14,
+      "review": 23
+    }
+  }
+}

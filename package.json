@@ -1,0 +1,29 @@
+{
+  "name": "frieda-fan-portfolio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "figma:bridge": "node scripts/figma_bridge.mjs",
+    "figma:validate": "node scripts/figma_sync_validate.mjs"
+  },
+  "dependencies": {
+    "@fontsource/bodoni-moda": "^5.2.7",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/ibm-plex-sans": "^5.2.8",
+    "@fontsource/unbounded": "^5.2.8",
+    "@gsap/react": "^2.1.2",
+    "gsap": "^3.13.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.6.0",
+    "playwright": "^1.61.1",
+    "vite": "^7.0.4"
+  }
+}

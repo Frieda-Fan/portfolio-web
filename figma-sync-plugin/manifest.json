@@ -1,0 +1,13 @@
+{
+  "name": "Frieda Portfolio Sync",
+  "id": "frieda-portfolio-sync-local",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["none"],
+    "devAllowedDomains": ["http://127.0.0.1:4175"]
+  }
+}
