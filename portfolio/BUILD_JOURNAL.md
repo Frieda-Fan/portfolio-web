@@ -1036,3 +1036,23 @@ Codex 开始网站任务前应先阅读本文件；完成有意义的任务后�
 - New folder contents do not automatically enter the public site. Figma decides the selected images and order; explicit strict media manifests prevent extra archival files from appearing.
 - Product category order is deterministic in both the Figma sync contract and data layer, so Open Sport remains first regardless of filesystem or source-array order.
 - No deployment was performed; `http://127.0.0.1:4174/` remains the retained local review target.
+
+### S-033 — 2026-07-31 — Publish the initial GitHub repository
+
+#### Task goal and completion criteria
+
+- Goal: publish the files required to build, deploy, and maintain the portfolio at `Frieda-Fan/portfolio-web` without uploading local caches or large editable source archives.
+- Completion criteria: initialize the empty repository on `main`, verify a production build, exclude non-runtime artifacts, and confirm the remote commit.
+
+#### Completed and verified
+
+- Added repository ignore rules for dependencies, generated output, local Codex state, environment files, InDesign files, raw portfolio media, review captures, and redundant PNG exports.
+- Published the React/Vite source, optimized runtime media, audio, maintenance scripts, Figma sync plugin, and portfolio Markdown/JSON contracts.
+- Excluded `node_modules`, `dist`, `tmp`, raw `.indd` files, the 96 MB portfolio PDF, high-resolution source media, and local Figma review captures.
+- Production build passed with Vite 7.3.6 before publication.
+- Initial commit `45abb93` was pushed to `main` at `Frieda-Fan/portfolio-web`.
+
+#### Decision and reusable learning
+
+- GitHub is the coded runtime and maintenance record, while large editable source archives remain local. `web-assets/` and selected `public/` media are the deployable derivatives required by the application.
+- Because the remote was empty, the initial publication went directly to `main`; later work should use normal feature branches and pull requests.
