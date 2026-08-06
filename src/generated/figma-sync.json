@@ -4,7 +4,7 @@
     "fileKey": "l5lO3iusxMpin1GtDVfYcC",
     "homeNodeId": "104:2",
     "mode": "figma-page-142-2",
-    "syncedAt": "2026-07-30T21:54:48.9340227+08:00"
+    "syncedAt": "2026-08-06T11:01:14.6296909+08:00"
   },
   "designSource": {
     "pageNodeId": "142:2",
@@ -19,6 +19,7 @@
       "landscape": "107:2"
     },
     "cardAssets": {
+      "haqimi": "/figma-export/category/haqimi.jpg",
       "island-for-the-stateless": "/figma-export/category/island-for-the-stateless.webp",
       "infinitas-hotel": "/figma-export/category/infinitas-hotel.webp",
       "countryside-introduction-planning": "/figma-export/category/countryside-introduction-planning.webp",
@@ -27,32 +28,106 @@
       "s-o-s": "/figma-export/category/s-o-s.webp",
       "the-invisible-sisyphus": "/figma-export/category/the-invisible-sisyphus.webp",
       "the-cloud": "/figma-export/category/the-cloud.webp",
-      "three-body": "/figma-export/category/three-body.webp"
+      "three-body": "/figma-export/category/three-body.webp",
+      "anti-wastecolonialism": "/figma-export/category/anti-wastecolonialism.webp"
     },
     "cardNumbers": {
       "open-sport-imu": "01",
       "haqimi": "02",
       "brain-memory": "03",
       "human-head-model-system": "04",
-      "folded-courtyard": "01",
-      "island-for-the-stateless": "02",
+      "folded-courtyard": "02",
+      "island-for-the-stateless": "01",
       "infinitas-hotel": "03",
       "countryside-introduction-planning": "04",
       "trojan-forest": "01",
       "s-o-s": "02",
       "the-invisible-sisyphus": "01",
       "the-cloud": "02",
-      "anti-wastecolonialism": "03",
-      "three-body": "04"
+      "anti-wastecolonialism": "04",
+      "three-body": "03"
+    },
+    "projectTypography": {
+      "product-management": {
+        "sourceNodes": ["371:298", "371:268", "391:274", "391:555"],
+        "display": "Unbounded Medium",
+        "editorial": "Bodoni Moda Regular",
+        "body": "IBM Plex Sans Regular",
+        "metadata": "IBM Plex Mono Regular",
+        "labels": "IBM Plex Mono Medium"
+      }
+    },
+    "currentDetailSelections": {
+      "open-sport-imu": {
+        "nodeId": "371:298",
+        "openingMediaNodeId": "371:304",
+        "theme": "dark",
+        "visibleAssetCount": 4,
+        "openingCrop": { "leftPercent": -65.51, "topPercent": 0.03, "widthPercent": 155.59, "heightPercent": 100 }
+      },
+      "haqimi": {
+        "nodeId": "371:268",
+        "theme": "dark",
+        "visibleAssetCount": 11,
+        "openingRepeatedInGallery": true,
+        "openingCrop": { "leftPercent": -69.92, "topPercent": 0, "widthPercent": 169.91, "heightPercent": 109.19 },
+        "postConclusionAssetCount": 7,
+        "postConclusionIndices": [4, 5, 6, 7, 8, 9, 10],
+        "preConclusionVideoNodeId": "433:280",
+        "preConclusionVideoSource": "/media/haqimi/haqimi-pre-conclusion.mp4",
+        "postConclusionVideoNodeId": "433:281",
+        "postConclusionVideoSource": "/media/haqimi/haqimi-post-conclusion.mp4"
+      },
+      "brain-memory": {
+        "nodeId": "391:274",
+        "theme": "ivory",
+        "visibleAssetCount": 4,
+        "openingRepeatedInGallery": true
+      },
+      "human-head-model-system": {
+        "nodeId": "391:555",
+        "theme": "dark",
+        "heroSource": "360_F_733437828_D2zk96Lt0wnq2l1xK8vuKtKzCqe2PoLS",
+        "visibleAssetCount": 3,
+        "openingCrop": { "leftPercent": -0.05, "topPercent": 20.61, "widthPercent": 100, "heightPercent": 53.81 }
+      },
+      "three-body": {
+        "nodeId": "116:2",
+        "theme": "dark",
+        "heroSource": "product management-hua fan2_12",
+        "visibleAssetCount": 2,
+        "galleryNodeIds": ["357:526", "357:527"],
+        "gallerySources": ["product management-hua fan2_11", "product management-hua fan2_12"],
+        "aiEditorialCover": false,
+        "openingCrop": { "leftPercent": -81.73, "widthPercent": 192.6, "heightPercent": 123.8 },
+        "editorialDisclosure": true
+      },
+      "the-invisible-sisyphus": {
+        "nodeId": "128:2",
+        "continuationNodeIds": ["127:2", "131:2", "132:2", "130:2"],
+        "theme": "dark",
+        "visibleAssetCount": 7,
+        "openingRepeatedInStatement": true,
+        "openingCrop": { "leftPercent": 0.09, "topPercent": -12.36, "widthPercent": 184.91, "heightPercent": 118.89 },
+        "statementVideoNodeId": "363:276",
+        "statementVideoSource": "/media/the-invisible-sisyphus/installation-the-invisible-sisyphus.mp4",
+        "videoNodeId": "363:278",
+        "videoSource": "/media/the-invisible-sisyphus/myvideo-2.mp4",
+        "videoPlayback": "muted-autoplay-loop-inline-with-controls"
+      }
     },
     "categoryFrames": {
       "product-management": {
         "nodeId": "369:290",
-        "projects": ["open-sport-imu", "haqimi", "brain-memory", "human-head-model-system"]
+        "projects": ["open-sport-imu", "haqimi", "brain-memory", "human-head-model-system"],
+        "canvas": { "width": 1440, "height": 1008 },
+        "projectGrid": { "top": 311, "columns": 3, "columnWidth": 409, "columnGap": 52, "rowHeight": 313, "rowGap": 28 }
       },
       "architecture": {
         "nodeId": "108:2",
-        "projects": ["island-for-the-stateless", "infinitas-hotel", "countryside-introduction-planning", "folded-courtyard"]
+        "projects": ["island-for-the-stateless", "folded-courtyard", "infinitas-hotel", "countryside-introduction-planning"],
+        "canvas": { "width": 1440, "height": 1008 },
+        "projectGrid": { "top": 311, "columns": 3, "columnWidth": 409, "columnGap": 52, "rowHeight": 313, "rowGap": 28 }
       },
       "landscape": {
         "nodeId": "107:2",
@@ -60,7 +135,9 @@
       },
       "installation": {
         "nodeId": "106:2",
-        "projects": ["the-invisible-sisyphus", "the-cloud", "three-body"]
+        "projects": ["the-invisible-sisyphus", "the-cloud", "three-body", "anti-wastecolonialism"],
+        "canvas": { "width": 1440, "height": 1008 },
+        "projectGrid": { "top": 311, "columns": 3, "columnWidth": 409, "columnGap": 52, "rowHeight": 313, "rowGap": 28 }
       }
     },
     "projectFrames": {
@@ -81,7 +158,7 @@
     }
   },
   "site": {
-    "wordmark": "Frieda Hua Fan",
+    "wordmark": "Frieda Fan",
     "homeEyebrow": "Frieda Hua Fan · work COLLECTION"
   },
   "audio": {

@@ -115,15 +115,14 @@ img { display: block; max-width: 100%; }
 .ritual-latin { margin: 22px 0 0; font: italic 400 23px/1 "Bodoni Moda", serif; color: var(--pink); }
 .category-heading { position: relative; z-index: 3; display: block; }
 .category-heading h1 { margin: 16px 0 0; font: 500 clamp(54px, 6.667vw, 96px)/1.275 "Unbounded", sans-serif; letter-spacing: -.105em; }
-.category-page--product-management .category-heading h1 { max-width: 850px; line-height: .92; }
 .category-project-grid { position: absolute; z-index: 2; box-sizing: border-box; top: 311px; left: 0; width: 100%; min-height: 697px; margin: 0; padding: 0 54px 43px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 313px; align-content: start; gap: 28px 52px; }
 .category-project-grid--landscape { top: 313px; min-height: 473px; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 430px; }
-.category-page--product-management { min-height: 1310px; }
-.category-project-grid--product-management { top: 390px; min-height: 888px; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 430px; }
 .project-sigil { min-width: 0; color: white; }
 .project-sigil__image { position: relative; height: 207px; overflow: hidden; background: #120e1c; }
 .project-sigil__image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.82) contrast(1.05); transition: transform .6s, filter .6s; }
-.project-sigil--brain-memory .project-sigil__image img { object-fit: contain; }
+.category-project-grid--product-management .project-sigil__image img { filter: none; }
+.project-sigil--haqimi .project-sigil__image img { position: absolute; left: 0; top: -71.19%; width: 100%; height: 263.45%; max-width: none; object-fit: fill; }
+.project-sigil--brain-memory .project-sigil__image img { position: absolute; left: 0; top: -9.94%; width: 100%; height: 139.74%; max-width: none; object-fit: fill; }
 .project-sigil__image span { position: absolute; left: 12px; bottom: 10px; padding: 4px 7px; background: #f5efdf; font: 10px/1 "IBM Plex Mono", monospace; }
 .project-sigil strong { display: block; margin-top: 10px; font: 500 clamp(13px, 1.25vw, 19px)/1.05 "Unbounded", sans-serif; }
 .project-sigil em { display: block; margin-top: 6px; font: 9px/1.3 "IBM Plex Mono", monospace; font-style: normal; }
@@ -145,11 +144,24 @@ img { display: block; max-width: 100%; }
 .project-hero dd { margin: 0; }
 .project-hero__media { position: relative; align-self: stretch; min-height: 62vh; margin: 0; overflow: hidden; }
 .project-hero__media img { width: 100%; height: 100%; object-fit: cover; }
+.project-hero__media .project-hero__image--figma-crop {
+  position: absolute;
+  left: var(--hero-left);
+  top: var(--hero-top);
+  width: var(--hero-width);
+  height: var(--hero-height);
+  max-width: none;
+  object-fit: fill;
+}
 .project-hero__media figcaption { position: absolute; right: 20px; bottom: 18px; max-width: 310px; padding: 7px 9px; color: white; background: rgba(0,0,0,.72); font: 9px/1.35 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .04em; }
+.project-page--three-body .project-hero__media img { position: absolute; top: 0; left: -81.73%; width: 192.6%; height: 123.8%; max-width: none; object-fit: fill; }
 .project-intro { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; padding: 140px 32px 190px; border-top: 1px solid var(--line); }
 .project-intro > .eyebrow { grid-column: 1 / 3; }
 .project-intro h2 { grid-column: 3 / 11; margin: 0; font: 400 clamp(34px, 4.8vw, 74px)/1.04 "Bodoni Moda", serif; letter-spacing: -.025em; }
 .project-intro__body { grid-column: 7 / 11; margin-top: 70px; font-size: 16px; line-height: 1.6; color: var(--muted); }
+.project-intro__image { grid-column: 3 / 5; margin: 70px 0 0; overflow: hidden; }
+.project-intro__image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.project-intro__image--video video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
 .project-gallery { padding-bottom: 100px; }
 .media-block { margin-bottom: 160px; }
 .media-chapter { width: calc(100% - 64px); margin: 0 32px 160px; }
@@ -164,51 +176,134 @@ img { display: block; max-width: 100%; }
   object-fit: cover;
   background: transparent;
 }
+.project-page--the-invisible-sisyphus .project-gallery { padding-bottom: 0; }
+.project-video { width: min(1280px, 100%); margin: 140px 0; background: #000; }
+.project-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
+.project-page--haqimi .project-video { width: 79.86%; margin: 0 auto 52px; }
+.project-page--haqimi .project-video video { aspect-ratio: 1150 / 647; }
+.project-video--post-conclusion { width: 79.86%; margin: 0 auto 52px; }
+.project-video--post-conclusion video { aspect-ratio: 1150 / 647; }
 .project-page--haqimi .project-hero,
 .project-page--open-sport-imu .project-hero,
 .project-page--brain-memory .project-hero,
 .project-page--human-head-model-system .project-hero {
+  height: 1000px;
   min-height: 1000px;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: minmax(0, 560fr) minmax(0, 778fr);
+  gap: 38px;
   align-items: stretch;
-  padding-top: 112px;
+  padding: 112px 32px 32px;
 }
 .project-page--haqimi .project-hero__copy,
 .project-page--open-sport-imu .project-hero__copy,
 .project-page--brain-memory .project-hero__copy,
 .project-page--human-head-model-system .project-hero__copy {
-  justify-content: flex-start;
-  padding-top: 8px;
+  position: relative;
+  display: block;
+  padding: 0;
 }
 .project-page--haqimi .back-link,
 .project-page--open-sport-imu .back-link,
 .project-page--brain-memory .back-link,
-.project-page--human-head-model-system .back-link { margin-bottom: 50px; }
+.project-page--human-head-model-system .back-link {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  margin: 0;
+  color: var(--project-accent);
+  font-size: 11px;
+  line-height: normal;
+  letter-spacing: 1.4px;
+}
 .project-page--haqimi .project-hero h1,
 .project-page--open-sport-imu .project-hero h1,
 .project-page--brain-memory .project-hero h1,
 .project-page--human-head-model-system .project-hero h1 {
-  margin: 0 0 44px;
-  font-size: clamp(54px, 4.583vw, 66px);
+  position: absolute;
+  left: 0;
+  top: 236px;
+  width: 560px;
+  height: 190px;
+  margin: 0;
+  font-size: 66px;
   line-height: 1;
-  letter-spacing: -.045em;
+  letter-spacing: 0;
+  white-space: pre-line;
 }
-.project-page--brain-memory .project-hero h1 { white-space: pre-line; }
+.project-page--brain-memory .project-hero h1 { top: 242px; }
 .project-page--haqimi .project-subtitle,
 .project-page--open-sport-imu .project-subtitle,
 .project-page--brain-memory .project-subtitle,
 .project-page--human-head-model-system .project-subtitle {
+  position: absolute;
+  left: 0;
+  top: 478px;
+  width: 530px;
   max-width: 530px;
-  font: 400 24px/1.45 "IBM Plex Sans", sans-serif;
+  height: 140px;
+  margin: 0;
+  font: 400 24px/1.45 "Bodoni Moda", serif;
 }
+.project-page--brain-memory .project-subtitle { top: 485px; }
 .project-page--haqimi .project-hero dl,
 .project-page--open-sport-imu .project-hero dl,
 .project-page--brain-memory .project-hero dl,
-.project-page--human-head-model-system .project-hero dl { margin-top: auto; }
+.project-page--human-head-model-system .project-hero dl {
+  position: absolute;
+  left: 0;
+  top: var(--hero-meta-top, 743px);
+  width: 530px;
+  margin: 0;
+  border: 0;
+}
+.project-page--brain-memory .project-hero dl { top: 750px; }
+.project-page--haqimi .project-hero dl div,
+.project-page--open-sport-imu .project-hero dl div,
+.project-page--brain-memory .project-hero dl div,
+.project-page--human-head-model-system .project-hero dl div {
+  display: block;
+  padding: 0;
+  border: 0;
+  font: 14px/1.8 "IBM Plex Mono", monospace;
+}
+.project-page--haqimi .project-hero dt,
+.project-page--open-sport-imu .project-hero dt,
+.project-page--brain-memory .project-hero dt,
+.project-page--human-head-model-system .project-hero dt {
+  display: inline-block;
+  width: 70px;
+  color: inherit;
+}
+.project-page--haqimi .project-hero dd,
+.project-page--open-sport-imu .project-hero dd,
+.project-page--brain-memory .project-hero dd,
+.project-page--human-head-model-system .project-hero dd { display: inline; }
 .project-page--haqimi .project-hero__media,
 .project-page--open-sport-imu .project-hero__media,
 .project-page--brain-memory .project-hero__media,
 .project-page--human-head-model-system .project-hero__media { min-height: 856px; }
+.project-page--haqimi .project-hero__image--figma-crop,
+.project-page--open-sport-imu .project-hero__image--figma-crop,
+.project-page--brain-memory .project-hero__image--figma-crop,
+.project-page--human-head-model-system .project-hero__image--figma-crop {
+  position: absolute;
+  left: var(--hero-left);
+  top: var(--hero-top);
+  width: var(--hero-width);
+  height: var(--hero-height);
+  max-width: none;
+  object-fit: fill;
+}
+.project-page--human-head-model-system .project-hero {
+  grid-template-columns: minmax(0, 560fr) minmax(0, 810fr);
+  padding: 120px 0 32px 32px;
+}
+.project-page--human-head-model-system .back-link { top: 0; }
+.project-page--human-head-model-system .project-hero h1 { top: 234px; }
+.project-page--human-head-model-system .project-hero h1 { font-size: 62px; letter-spacing: -.03em; }
+.project-page--human-head-model-system .project-subtitle { top: 477px; }
+.project-page--human-head-model-system .project-hero dl { top: 742px; }
+.project-page--human-head-model-system .project-hero__media { min-height: 848px; }
 .project-page--haqimi .project-intro,
 .project-page--open-sport-imu .project-intro,
 .project-page--brain-memory .project-intro,
@@ -218,12 +313,23 @@ img { display: block; max-width: 100%; }
   padding-top: 108px;
   padding-bottom: 90px;
 }
+.project-page--haqimi .project-intro > .eyebrow,
+.project-page--open-sport-imu .project-intro > .eyebrow,
+.project-page--brain-memory .project-intro > .eyebrow,
+.project-page--human-head-model-system .project-intro > .eyebrow,
+.project-page--haqimi .project-conclusion > .eyebrow,
+.project-page--open-sport-imu .project-conclusion > .eyebrow,
+.project-page--brain-memory .project-conclusion > .eyebrow,
+.project-page--human-head-model-system .project-conclusion > .eyebrow {
+  padding-top: 12px;
+  color: var(--project-accent);
+}
 .project-page--haqimi .project-intro h2,
 .project-page--open-sport-imu .project-intro h2,
 .project-page--brain-memory .project-intro h2,
 .project-page--human-head-model-system .project-intro h2 {
   grid-column: 3 / 11;
-  font: 500 clamp(34px, 3.056vw, 44px)/1.12 "Unbounded", sans-serif;
+  font: 400 clamp(34px, 3.056vw, 44px)/1.12 "Bodoni Moda", serif;
   letter-spacing: -.035em;
 }
 .project-page--haqimi .project-intro__body,
@@ -237,6 +343,7 @@ img { display: block; max-width: 100%; }
 .project-page--open-sport-imu .project-gallery,
 .project-page--brain-memory .project-gallery,
 .project-page--human-head-model-system .project-gallery { padding-bottom: 0; }
+.project-page--open-sport-imu .project-gallery { padding-bottom: 44px; }
 .media-chapter--product-case {
   width: 100%;
   margin: 0 0 36px;
@@ -249,6 +356,17 @@ img { display: block; max-width: 100%; }
   object-fit: contain;
   background: #010102;
 }
+.project-page--haqimi .media-chapter--product-case-0 {
+  width: 79.79%;
+  aspect-ratio: 1149 / 812;
+  margin-right: auto;
+  margin-bottom: 34px;
+  margin-left: auto;
+}
+.project-page--haqimi .media-chapter--product-case:not(.media-chapter--product-case-0) { aspect-ratio: 16 / 9; }
+.project-page--open-sport-imu .media-chapter--product-case { aspect-ratio: 1440 / 1018; }
+.project-page--haqimi .media-chapter--product-case img,
+.project-page--open-sport-imu .media-chapter--product-case img { height: 100%; }
 .project-page--haqimi .project-conclusion,
 .project-page--open-sport-imu .project-conclusion,
 .project-page--brain-memory .project-conclusion,
@@ -261,7 +379,7 @@ img { display: block; max-width: 100%; }
 .project-page--open-sport-imu .project-conclusion h2,
 .project-page--brain-memory .project-conclusion h2,
 .project-page--human-head-model-system .project-conclusion h2 {
-  font: 500 clamp(34px, 2.917vw, 42px)/1.15 "Unbounded", sans-serif;
+  font: 400 clamp(34px, 2.917vw, 42px)/1.15 "Bodoni Moda", serif;
 }
 .project-page--trojan-forest .project-hero__media img {
   position: absolute;
@@ -401,6 +519,52 @@ img { display: block; max-width: 100%; }
   transform: translateY(min(-1.001vw, -14.41px));
   object-fit: cover;
 }
+.project-page--haqimi .project-conclusion {
+  min-height: 388px;
+  padding-bottom: 36px;
+}
+.project-page--open-sport-imu .project-conclusion {
+  min-height: 360px;
+  height: 360px;
+}
+.project-page--haqimi .project-video:not(.project-video--post-conclusion) { margin-bottom: 79px; }
+.project-page--haqimi .project-post-conclusion {
+  padding-top: 36px;
+  padding-bottom: 52px;
+}
+.project-page--haqimi .project-closing-media--haqimi:first-child { margin-bottom: 55px; }
+.project-page--haqimi .project-footer,
+.project-page--open-sport-imu .project-footer { min-height: 260px; }
+.project-page--three-body .project-intro { margin-top: 36px; }
+.project-page--three-body .project-gallery {
+  padding-top: 36px;
+  padding-bottom: 0;
+}
+.project-page--three-body .media-chapter--figma-full { margin-bottom: 36px; }
+.project-page--three-body .project-footer {
+  min-height: 381px;
+  margin-top: 36px;
+}
+.project-page--three-body { min-height: 6851px; }
+.project-post-conclusion {
+  padding: 0 0 132px;
+}
+.project-closing-media--haqimi {
+  width: 79.86%;
+  margin: 0 auto 52px;
+  aspect-ratio: 1150 / 647;
+  overflow: hidden;
+}
+.project-closing-media--haqimi:last-child {
+  margin-bottom: 0;
+}
+.project-closing-media--haqimi img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
 .media-chapter--folded {
   position: relative;
   width: 100%;
@@ -490,6 +654,72 @@ img { display: block; max-width: 100%; }
   .project-hero__copy { min-height: 67svh; }
   .project-hero h1 { font-size: clamp(44px, 13vw, 80px); }
   .project-hero__media { min-height: 58svh; }
+  .project-page--haqimi .project-hero,
+  .project-page--open-sport-imu .project-hero,
+  .project-page--brain-memory .project-hero,
+  .project-page--human-head-model-system .project-hero {
+    height: auto;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 95px 18px 60px;
+    gap: 38px;
+  }
+  .project-page--haqimi .project-hero__copy,
+  .project-page--open-sport-imu .project-hero__copy,
+  .project-page--brain-memory .project-hero__copy,
+  .project-page--human-head-model-system .project-hero__copy {
+    min-height: auto;
+    display: flex;
+    padding: 0;
+  }
+  .project-page--haqimi .back-link,
+  .project-page--open-sport-imu .back-link,
+  .project-page--brain-memory .back-link,
+  .project-page--human-head-model-system .back-link {
+    position: static;
+    margin-bottom: 54px;
+  }
+  .project-page--haqimi .project-hero h1,
+  .project-page--open-sport-imu .project-hero h1,
+  .project-page--brain-memory .project-hero h1,
+  .project-page--human-head-model-system .project-hero h1 {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0 0 28px;
+    font-size: clamp(44px, 13vw, 66px);
+  }
+  .project-page--haqimi .project-subtitle,
+  .project-page--open-sport-imu .project-subtitle,
+  .project-page--brain-memory .project-subtitle,
+  .project-page--human-head-model-system .project-subtitle {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+  .project-page--haqimi .project-hero dl,
+  .project-page--open-sport-imu .project-hero dl,
+  .project-page--brain-memory .project-hero dl,
+  .project-page--human-head-model-system .project-hero dl {
+    position: static;
+    width: auto;
+    margin-top: 48px;
+  }
+  .project-page--haqimi .project-hero__media,
+  .project-page--open-sport-imu .project-hero__media,
+  .project-page--brain-memory .project-hero__media,
+  .project-page--human-head-model-system .project-hero__media { min-height: 0; }
+  .project-page--haqimi .project-hero__image--figma-crop,
+  .project-page--open-sport-imu .project-hero__image--figma-crop,
+  .project-page--brain-memory .project-hero__image--figma-crop,
+  .project-page--human-head-model-system .project-hero__image--figma-crop {
+    position: static;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .project-page--haqimi .media-chapter--product-case-0 { width: calc(100% - 36px); margin: 0 18px 100px; }
   .project-intro { display: block; padding: 90px 18px 120px; }
   .project-intro h2 { margin-top: 25px; font-size: clamp(31px, 9vw, 52px); }
   .project-intro__body { margin-top: 55px; }
@@ -552,6 +782,12 @@ img { display: block; max-width: 100%; }
     transform: none;
     object-fit: contain;
   }
+  .project-post-conclusion { padding: 0 0 80px; }
+  .project-closing-media--haqimi {
+    width: calc(100% - 36px);
+    margin: 0 18px 24px;
+    aspect-ratio: 1150 / 647;
+  }
   .media-chapter--folded { width: 100%; margin: 0; height: auto; padding: 0; }
   .media-chapter--folded img { width: 100%; height: auto; margin: 0; object-fit: contain; }
   .media-chapter--folded-1 .media-caption { position: static; margin: 10px 18px 0; }
@@ -559,6 +795,20 @@ img { display: block; max-width: 100%; }
   .media-caption em { display: none; }
   .media-matrix__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .media-matrix__item img { max-height: 34vh; }
+  .project-intro__image { grid-column: 1 / -1; margin-top: 32px; }
+  .project-video { width: 100%; margin: 70px 0; }
+  .project-page--haqimi .project-video,
+  .project-video--post-conclusion { width: calc(100% - 36px); margin: 0 18px 24px; }
+  .project-page--haqimi .project-video:not(.project-video--post-conclusion) { margin: 0 18px 24px; }
+  .project-page--haqimi .project-post-conclusion { padding: 0 0 80px; }
+  .project-page--haqimi .project-closing-media--haqimi:first-child { margin-bottom: 24px; }
+  .project-page--open-sport-imu .project-gallery { padding-bottom: 0; }
+  .project-page--open-sport-imu .project-conclusion { min-height: 0; height: auto; }
+  .project-page--three-body { min-height: 0; }
+  .project-page--three-body .project-intro { margin-top: 0; }
+  .project-page--three-body .project-gallery { padding-top: 0; }
+  .project-page--three-body .media-chapter--figma-full { margin-bottom: 0; }
+  .project-page--three-body .project-footer { min-height: 0; margin-top: 0; }
   .project-conclusion { display: block; padding: 70px 18px 110px; }
   .project-conclusion h2 { margin-top: 26px; font-size: clamp(34px, 9.5vw, 54px); }
   .project-footer { grid-template-columns: 1fr; }

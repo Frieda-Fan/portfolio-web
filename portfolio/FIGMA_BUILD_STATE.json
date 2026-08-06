@@ -2,7 +2,7 @@
   "runId": "portfolio-figma-v1",
   "fileKey": "l5lO3iusxMpin1GtDVfYcC",
   "fileName": "Untitled",
-  "updatedAt": "2026-07-30T21:54:48.9340227+08:00",
+  "updatedAt": "2026-08-06T11:01:14.6296909+08:00",
   "phase": "figma-authoritative-design-to-code-sync",
   "deployment": "out-of-scope-by-user-request",
   "discovery": {
@@ -93,8 +93,16 @@
     "sourcesAiRecordPage": "89:181",
     "sourcesAiRecordFrame": "89:182",
     "productManagementIndex": "369:290",
+    "openSportDetail": "371:298",
+    "openSportOpeningMedia": "371:304",
+    "haqimiDetail": "371:268",
+    "haqimiPreConclusionVideo": "433:280",
+    "haqimiPostConclusionVideo": "433:281",
     "brainMemoryDetail": "391:274",
-    "humanHeadModelSystemDetail": "391:555"
+    "humanHeadModelSystemDetail": "391:555",
+    "invisibleSisyphusDetail": "128:2",
+    "invisibleSisyphusVideo": "363:278",
+    "threeBodyDetail": "116:2"
   },
   "notes": [
     "Trojan Forest is synchronized from nodes 118:2, 121:2, 120:2, and 117:2: page-21 is the cropped opening image, page-22 through page-26 form the continuous gallery, and the obsolete perspective10 opening image is excluded.",
@@ -119,6 +127,12 @@
     "Island for the Stateless is synchronized from node 113:2 (A02 · Island for the Stateless · Full Detail): seven selected media assets, the overlapping composite/panorama section, custom project-spread crop, post-conclusion closing image, and Figma caption numbering.",
     "Product Management is synchronized from category node 369:290 and detail nodes 371:268 (HaQimi) and 371:298 (Open Sport IMU). It appears before Architecture on Home and in shared navigation, and reuses the existing category ritual, Latin voice, project reveal, and direct-project-entry rules.",
     "Website audio is temporarily disabled through src/generated/figma-sync.json. All audio assets and animation hooks are retained; the entry offers muted access only and the shared sound control remains visibly off and disabled. The Figma connector was unavailable during this temporary runtime change, so its visual control state remains pending a direct Figma write.",
-    "Product Management is now synchronized as a four-project two-row index from node 369:290: Open Sport IMU, HaQimi, Brain Memory, and Human Head Model System. The new detail sources are 391:274 and 391:555. Shared navigation and Home order are Product Management, Installation, Architecture, Landscape."
+    "Product Management is now synchronized as a four-project two-row index from node 369:290: Open Sport IMU, HaQimi, Brain Memory, and Human Head Model System. The new detail sources are 391:274 and 391:555. Shared navigation and Home order are Product Management, Installation, Architecture, Landscape.",
+    "Product Management index node 369:290 now matches Architecture index node 108:2 at 1440 x 1008, with the same single-line intro rhythm and 3-column 409 px project grid: the first three projects occupy row one and Human Head Model System begins row two.",
+    "Product Management detail nodes 371:298, 371:268, 391:274, and 391:555 now use the Architecture font-role system: Unbounded Medium display text, Bodoni Moda Regular editorial text, IBM Plex Sans Regular body copy, IBM Plex Mono Regular metadata, and IBM Plex Mono Medium labels.",
+    "The 2026-08-04 full-page readback covered every current route/detail frame on page 142:2. The local runtime now follows the current Architecture card order and numbering, Brain Memory's white four-asset board, Three Body's documentary-photo opening, Figma-specific footer cycles, and the current About copy. Existing entrance motion and muted audio remain unchanged.",
+    "Product Management was re-read from current index node 369:290 and detail nodes 371:298, 371:268, 391:274, and 391:555, with user-selected Open Sport opening media node 371:304. The runtime now uses exact Figma hero crops, two-row editorial metadata, one-paragraph statements, correct repeated-opening rules, the Figma-exported HaQimi card photo, and the blue wireframe Human Head media sequence.",
+    "Invisible Sisyphus was re-read from current root node 128:2 and its nested continuation frames. The runtime now uses the exact opening fill transform, repeats the opening image in the statement as designed, preserves the seven-asset sequence, and plays local H.264 source MyVideo_2.mp4 at Figma video node 363:278 as muted autoplaying inline media with controls.",
+    "The 2026-08-06 detail sync uses current frames 371:298, 371:268, and 116:2. Open Sport now ends after its three Figma content boards; HaQimi retains its two Figma video nodes and seven post-conclusion boards; Three Body renders only gallery nodes 357:526 and 357:527 after the statement."
   ]
 }

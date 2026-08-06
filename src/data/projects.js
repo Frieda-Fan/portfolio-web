@@ -1,13 +1,11 @@
-import threeBodyEditorial from "../../web-assets/assets/generated/three-body-editorial-v1.webp";
-
 const sourceImages = import.meta.glob(
-  "../../web-assets/{product-management,architecture,landscape,interacation}/**/*.webp",
+  "../../web-assets/{product-management,architecture,landscape,interacation}/**/*.{webp,png}",
   { eager: true, query: "?url", import: "default" },
 );
 
 const imageStem = (path) =>
   decodeURIComponent(path.split("/").at(-1))
-    .replace(/\.webp$/i, "")
+    .replace(/\.(?:webp|png)$/i, "")
     .toLocaleLowerCase();
 
 const imagesFor = (
@@ -464,7 +462,6 @@ const rawProjects = [
     matrixRules: [
       { includes: ["img_"], columns: 3, chunk: 6, title: "Installation and Visitor Archive" },
     ],
-    editorialCover: threeBodyEditorial,
     editorialDisclosure: "AI-generated editorial interpretation · not project documentation",
     summary:
       "Three Body uses the unresolved scientific Three-Body Problem as a metaphor for social relationships. Visitor reflections are translated into a changing field of fabric, sound, and projected planetary trajectories.",
@@ -486,15 +483,61 @@ const figmaMediaOverrides = {
       "product management-hua fan2_07",
       "product management-hua fan2_08",
       "product management-hua fan2_09",
+      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_08-detail",
+      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_06",
+      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_08",
+      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_09",
+      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_10",
+      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_12",
+      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_13",
     ],
     layout: "product-case",
+    includeOpeningInGallery: true,
+    accent: "#ff5214",
+    heroCrop: { left: "-69.92%", top: "0%", width: "169.91%", height: "109.19%" },
+    heroMetaTop: "578px",
+    meta: [
+      ["Role", "Product Management · Product Design"],
+      ["Type", "Interactive Dining Product · 2026"],
+    ],
+    overview: [
+      "Built from market research into China’s restaurant economy and social-media-led dining culture, the concept reframes a menu as an embodied guide. Gesture recognition, ambient scent and a character-like device make flavor easier to explore.",
+    ],
+    postConclusionIndices: [4, 5, 6, 7, 8, 9, 10],
+    video: {
+      src: "/media/haqimi/haqimi-pre-conclusion.mp4",
+      label: "HaQimi driving scene video",
+      figmaNodeId: "433:280",
+    },
+    postConclusionVideo: {
+      src: "/media/haqimi/haqimi-post-conclusion.mp4",
+      label: "HaQimi flavor album demo video",
+      figmaNodeId: "433:281",
+    },
   },
   "open-sport-imu": {
     coverHint: "01-cover",
-    sequence: ["01-cover", "02-research", "03-definition", "04-implementation", "05-uxui"],
+    sequence: [
+      "01-cover",
+      "02 research｜用户研究与用户画像",
+      "03 definition｜产品功能定位与演进",
+      "04 model｜数据采集与模型选择",
+    ],
     layout: "product-case",
+    displayTitle: "Open Sport\nIMU",
+    accent: "#7a33ff",
+    heroCrop: { left: "-65.51%", top: "0.03%", width: "155.59%", height: "100%" },
+    meta: [
+      ["Role", "Smart Hardware Product Manager"],
+      ["Focus", "User Research · Product Definition · Model Strategy · UX/UI"],
+    ],
+    overview: [
+      "Open Sport connects user research, dual-device sensing, model evidence and low-burden feedback. It separates activity recognition from personal posture baselines, then makes every reminder traceable and recoverable.",
+    ],
   },
   "brain-memory": {
+    theme: "ivory",
+    visibleMediaCount: 4,
     coverHint: "brain memory — reference-led v2",
     sequence: [
       "brain memory — reference-led v2",
@@ -506,11 +549,35 @@ const figmaMediaOverrides = {
     ],
     layout: "product-case",
     displayTitle: "Brain\nMemory",
+    includeOpeningInGallery: true,
+    accent: "#7a33ff",
+    heroCrop: { left: "0%", top: "0%", width: "100%", height: "100%" },
+    meta: [
+      ["Role", "Product Manager · UI / Interaction Designer"],
+      ["Focus", "Research · Information Architecture · Prototype · Build"],
+    ],
+    overview: [
+      "Brain Memory links computer-matched signals, personal albums, conversational retrieval and co-creation. Rather than treating search as recall alone, it rebuilds context through time, place, people and shared authorship.",
+    ],
   },
   "human-head-model-system": {
-    coverHint: "human-head-home",
-    sequence: ["human-head-home", "human-head-measure", "human-head-generate"],
+    coverHint: "360_f_733437828_d2zk96lt0wnq2l1xk8vuktkzcqe2pols",
+    sequence: [
+      "360_f_733437828_d2zk96lt0wnq2l1xk8vuktkzcqe2pols",
+      "03 — measurement workflow",
+      "04 — parametric generation",
+    ],
     layout: "product-case",
+    displayTitle: "Human Head\nModel System",
+    accent: "#7a33ff",
+    heroCrop: { left: "-0.05%", top: "20.61%", width: "100%", height: "53.81%" },
+    meta: [
+      ["Role", "Product Manager · System Designer"],
+      ["Focus", "Measurement Workflow · Parametric Modeling · Data Export"],
+    ],
+    overview: [
+      "The system combines automatic landmark detection, manual annotation, dimensional measurement, parameter adjustment and OBJ export in one workspace. It makes model evidence visible while supporting repeatable database construction.",
+    ],
   },
   "folded-courtyard": {
     coverHint: "00-cover",
@@ -567,13 +634,28 @@ const figmaMediaOverrides = {
   },
   "the-invisible-sisyphus": {
     sequence: ["portfolio-frieda fan (2)_03", "portfolio-frieda fan (2)_04", "portfolio-frieda fan (2)_05", "portfolio-frieda fan (2)_06", "portfolio-frieda fan (2)_07", "portfolio-frieda fan (2)_08", "portfolio-frieda fan (2)_09"],
+    heroCrop: { left: "0.09%", top: "-12.36%", width: "184.91%", height: "118.89%" },
+    includeHeroInIntro: true,
+    statementVideo: {
+      src: "/media/the-invisible-sisyphus/installation-the-invisible-sisyphus.mp4",
+      label: "The Invisible Sisyphus installation",
+      figmaNodeId: "363:276",
+    },
+    video: {
+      src: "/media/the-invisible-sisyphus/myvideo-2.mp4",
+      label: "The Invisible Sisyphus in motion",
+      figmaNodeId: "363:278",
+    },
   },
   "the-cloud": {
     sequence: ["portfolio-frieda fan (2)_10", "portfolio-frieda fan (2)_11", "portfolio-frieda fan (2)_12", "portfolio-frieda fan (2)_13"],
   },
   "three-body": {
-    sequence: ["product management-hua fan2_10", "product management-hua fan2_11", "product management-hua fan2_12"],
+    sequence: ["product management-hua fan2_11", "product management-hua fan2_12"],
     includeCoverInMedia: false,
+    heroHint: "product management-hua fan2_12",
+    includeOpeningInGallery: true,
+    disableEditorialCover: true,
   },
 };
 
@@ -588,19 +670,35 @@ export const projects = rawProjects.map((project) => {
       includeCoverInMedia: override?.includeCoverInMedia ?? true,
     },
   );
-  const images = media.map((item) => item.url);
+  const synchronizedMedia = override?.visibleMediaCount ? media.slice(0, override.visibleMediaCount) : media;
+  const images = synchronizedMedia.map((item) => item.url);
   return {
     ...project,
+    theme: override?.theme ?? project.theme,
+    editorialDisclosure: project.editorialDisclosure,
     matrixRules: override ? [] : project.matrixRules,
     figmaMediaSequence: Boolean(override),
     figmaMediaLayout: override?.layout ?? (override ? "full-width" : null),
     figmaMediaLabels: override?.labels ?? null,
     figmaMediaNumbers: override?.numbers ?? null,
     figmaDisplayTitle: override?.displayTitle ?? null,
+    figmaAccent: override?.accent ?? null,
+    figmaHeroCrop: override?.heroCrop ?? null,
+    figmaHeroMetaTop: override?.heroMetaTop ?? null,
+    figmaMeta: override?.meta ?? null,
     figmaPostConclusionIndex: override?.postConclusionIndex ?? null,
-    media,
+    figmaPostConclusionIndices: override?.postConclusionIndices ?? null,
+    figmaIncludeOpeningInGallery: override?.includeOpeningInGallery ?? false,
+    figmaIncludeHeroInIntro: override?.includeHeroInIntro ?? false,
+    figmaStatementVideo: override?.statementVideo ?? null,
+    figmaVideo: override?.video ?? null,
+    figmaPostConclusionVideo: override?.postConclusionVideo ?? null,
+    overview: override?.overview ?? project.overview,
+    media: synchronizedMedia,
     images,
-    coverImage: project.editorialCover ?? images[0],
+    coverImage: (override?.disableEditorialCover ? null : project.editorialCover)
+      ?? synchronizedMedia.find((item) => item.stem === override?.heroHint)?.url
+      ?? images[0],
   };
 });
 

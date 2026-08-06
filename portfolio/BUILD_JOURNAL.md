@@ -1056,3 +1056,241 @@ Codex 开始网站任务前应先阅读本文件；完成有意义的任务后�
 
 - GitHub is the coded runtime and maintenance record, while large editable source archives remain local. `web-assets/` and selected `public/` media are the deployable derivatives required by the application.
 - Because the remote was empty, the initial publication went directly to `main`; later work should use normal feature branches and pull requests.
+
+### S-034 · 2026-08-03 · Align Product Management index with Architecture
+
+#### Task goal and completion criteria
+
+- Goal: make the Product Management index use the same desktop page size and editorial grid as the Architecture index, with Figma remaining authoritative.
+- Completion criteria: update Figma node `369:290` before code; use the Architecture frame's exact geometry; preserve project order, prototype links, animations, detail pages, and muted audio; then verify the translated website.
+
+#### Completed and verified
+
+- Read Product Management node `369:290` and Architecture node `108:2` through the design-to-code workflow and copied the Architecture geometry rather than estimating from screenshots.
+- Resized Product Management to `1440 × 1008`, converted its title to the same single-line `96px` intro rhythm, and aligned the gallery to `y=311`, `1439 × 697`.
+- Reflowed the four existing linked cards into the Architecture pattern: three `409px` cards in row one and Human Head Model System in row two at the left.
+- Removed the Product Management-only two-column, enlarged-height, and wrapped-title CSS overrides so the runtime now consumes the shared Architecture category layout. Existing mobile rules remain shared and unchanged.
+- Figma read-back and screenshot QA confirmed the `1440 × 1008` frame, single-line title, three-column first row, and left-aligned fourth card.
+- The generated sync contract validated and the production build passed. Desktop `1440 × 1000` and mobile `390 × 844` browser audits returned HTTP 200 with four loaded images, no console errors, no broken images, and no horizontal overflow.
+
+#### Decision and reusable learning
+
+- When two category indexes must match, the reference Figma node's actual dimensions and child geometry are the contract; canvas labels and screenshots are secondary evidence.
+- A category-specific CSS override should only exist for an intentional design difference. Removing obsolete overrides keeps Figma and the shared React category component aligned.
+
+### S-035 · 2026-08-03 · Unify Product Management detail typography with Architecture
+
+#### Task goal and completion criteria
+
+- Goal: make all four Product Management project details use the same font-role system as the Architecture project details, with Figma updated before code.
+- Completion criteria: align Figma nodes `371:298`, `371:268`, `391:274`, and `391:555` to the Architecture title, editorial, body, metadata, and footer font families; preserve copy, media, geometry, motion, and muted audio; then translate and visually verify the four local routes.
+
+#### Completed and verified
+
+- Compared the four Product Management detail nodes with Architecture references `113:2` and `111:2`, then updated 44 named text layers in Figma without changing their copy, size, position, or containing geometry.
+- Standardized the role system to Unbounded Medium for display text, Bodoni Moda Regular for subtitles, project statements, and conclusions, IBM Plex Sans Regular for body copy, IBM Plex Mono Regular for metadata/footer labels, and IBM Plex Mono Medium for section labels.
+- Read back all four Figma frames through design-to-code: each reports the same family distribution for the affected roles, and opening/statement screenshots showed no clipping or overlap.
+- Removed the three Product Management-only website font-family overrides so the shared React detail template now renders the same Architecture font roles while retaining PM-specific sizing.
+- The generated contract validated and the production build passed. All four routes returned HTTP 200; computed-style checks matched the intended font families and weights, with no console errors, broken images, or horizontal overflow.
+
+#### Decision and reusable learning
+
+- Typography should be synchronized by semantic role rather than changing every text layer to one family. Architecture's hierarchy deliberately combines display, editorial serif, sans body, and mono metadata fonts.
+- When the user asks to unify fonts but not layout, preserve existing font sizes and text boxes; changing only family and weight avoids unintended reflow while still producing a consistent visual system.
+
+### S-036 · 2026-08-04 · Resync the complete local layout from current Figma
+
+#### Task goal and completion criteria
+
+- Goal: update the retained local React website from the current authoritative frames on Figma page `142:2`, without treating the existing website as an independent design source.
+- Completion criteria: read every current route/detail frame through design-to-code; correct all confirmed order, theme, media-selection, copy, and navigation differences; preserve the existing entrance motion and muted-audio capability; then pass contract, build, route, content, interaction, and matched-viewport visual checks.
+
+#### Completed and verified
+
+- Read page `142:2`, all six route/index frames, and every current top-level project detail frame through the Figma design-to-code workflow; no layout decision was inferred from the old runtime.
+- Corrected Architecture to the Figma order and numbering: Island `01`, Folded Courtyard `02`, Infinitas Hotel `03`, and Countryside `04`.
+- Synchronized Brain Memory from `391:274` to the current white theme and four unique Figma assets, removing the two obsolete local-only spreads while preserving the designed opening-image repetition.
+- Synchronized Three Body from `116:2`: the opening now uses the current documentary spread, exact `-81.73% / 192.6% / 123.8%` Figma crop, and the visible disclosure; the obsolete generated abstract cover is no longer rendered.
+- Restored Figma's explicit project-footer cycles for Product Management and the spatial work sequence, and aligned the About biography/footer copy with node `105:2`.
+- Existing magic-circle entrance, category ritual, project reveal, direct-project-entry behavior, and global muted-audio state were preserved.
+- The Figma contract validator and production build passed. Route audit passed `20/20`, content audit passed `14/14`, interaction audit passed, and the desktop/mobile visual audit reported no broken images, console errors, or horizontal overflow. Targeted 1440px readback confirmed the Three Body opening crop and all explicit footer destinations.
+
+#### Decision and reusable learning
+
+- Unique Figma image-asset count is not the same as DOM image count when a designed opening asset is intentionally reused later in the page; validation must compare both the Figma node structure and the rendered sequence.
+- Figma image-fill transforms must be translated explicitly. Selecting the right source asset without its crop can still produce a visibly wrong hero.
+- No deployment was performed. The retained local review target remains `http://127.0.0.1:4174/`.
+
+### S-037 — 2026-08-04 — Re-sync latest Product Management Figma layout
+
+#### Task goal
+
+- Re-read the user-specified current Figma opening-media node `371:304` and its owning Product Management frames instead of relying on the previous sync.
+- Completion criteria: the Product Management index and all four project pages reflect the current Figma media selection, crop, typography, metadata placement, gallery sequence, and desktop dimensions; existing global motion and muted-audio behavior remain unchanged; build and visual validation pass.
+
+#### Completed
+
+- Re-read index `369:290`, Open Sport `371:298` plus selected opening media `371:304`, HaQimi `371:268`, Brain Memory `391:274`, and Human Head Model System `391:555` through the current Figma design-to-code context.
+- Replaced the generic Product Management hero with the current 1440px Figma geometry, exact image-fill transforms, two-row role/focus metadata, current statement copy, and project-specific accent colors.
+- Corrected the gallery contract: Open Sport excludes its opening from the gallery, HaQimi and Brain Memory intentionally repeat it, and Human Head uses the wireframe opening plus the two current research boards.
+- Downloaded the exact current Figma HaQimi card photo and aligned the Product Management index card crops and shared wordmark to the current frame.
+- Preserved Home/category animation behavior and the global muted-audio rule.
+
+#### Validation evidence
+
+- Figma sync validator passed; production build passed with 342 modules.
+- Route audit passed `20/20`; content audit passed `14/14`.
+- Product Management desktop and mobile visual audit passed with HTTP 200, zero broken images, zero console errors, and no horizontal overflow.
+- Manual 1440px screenshot comparison confirmed the Open Sport `-65.51% / 155.59%` crop, HaQimi card photo, and two-line Human Head title.
+- No deployment was performed; the local review target remains `http://127.0.0.1:4174/`.
+
+### S-038 · 2026-08-04 · Re-sync Invisible Sisyphus and restore playable video
+
+#### Task goal and completion criteria
+
+- Goal: update the local Invisible Sisyphus detail from the current authoritative Figma frame `128:2` (`I01 · The Invisible Sisyphus · Part 01 / Opening + 01–02`) and its nested continuation frames.
+- Completion criteria: preserve the seven-image Figma narrative order, translate the current opening crop and statement composition, place Figma video layer `363:278` after image `07`, serve the matching local H.264 source as a muted inline video, and verify that playback time advances in the local browser without changing any other project, global motion, or muted-audio rule.
+
+#### Completed and verified
+
+- Read authoritative node `128:2` through design-to-code and confirmed that it now owns the nested continuation frames `127:2`, `131:2`, `132:2`, and `130:2`; the current sequence is one cropped opening, an intentionally repeated statement image, six full-width boards, and video node `363:278` after board `07`.
+- Translated the exact 1440px Figma opening geometry: `1440 × 1000` hero, media at `629.83 / 112 / 778.16 / 856`, and image fill at `0.09% / -12.36% / 184.91% / 118.89%`.
+- Copied the matching local `MyVideo_2.mp4` source into the served public media tree and rendered it as a muted, autoplaying, looping, inline H.264 video with native controls. The site-wide audio setting remains disabled and all other project/entrance behavior is unchanged.
+- Browser playback audit returned HTTP 200, MP4 range response 206, `readyState 4`, no media error, and continuous progress from `1.18s` to `3.01s`; the source duration is `22.44s`.
+- Figma contract validation and the production build passed. Content audit passed `14/14`, route audit passed `20/20`, and the 1440 × 1000 opening/video checks found no console errors, broken images, or horizontal overflow.
+
+#### Reusable learning
+
+- Figma video fills are represented as named rectangle layers rather than downloadable image assets. Synchronization must pair the Figma node name with the local source archive, then verify actual decode and time progression; checking only the file URL is insufficient.
+- Exact Figma fill transforms require selector specificity high enough to override the base media image rule. Geometry assertions should include the rendered image rectangle, not only the container.
+- No deployment was performed; the local review target remains `http://127.0.0.1:4174/projects/the-invisible-sisyphus`.
+
+### S-039 · 2026-08-05 · Re-sync HaQimi with 7 post-conclusion images from Figma
+
+#### Task goal and completion criteria
+
+- Goal: update the local HaQimi detail page (`P02 · HaQimi · Full Detail`, Figma node `371:268`) from the current Figma frame on page `07 Playable Web Flow · All Desktop`.
+- Completion criteria: reproduce the current Figma media selection and geometry — including 7 new images placed after the conclusion — preserve all existing animations and muted-audio behavior, and pass build, contract, route, content, interaction, and matched-viewport visual checks.
+
+#### Completed and verified
+
+- Read Figma node `371:268` through design-to-code and compared with the local website. Found 7 new rectangle layers after the conclusion section that were not in the previous sync.
+- Mapped each Figma image hash to local source files via SHA-256 comparison. Six of the seven map to existing PPT slide JPGs (`PPT_06`, `PPT_08`, `PPT_09`, `PPT_10`, `PPT_12`, `PPT_13`); one is a new portrait PNG (`3058×4096`) with no local match.
+- Downloaded the new PNG from Figma, added it to the source archive as `Haqimi智驾气味相册-饭点的味道是什么-初选PPT_08-detail.png`, and generated 16 optimized WebP derivatives (2400px max edge, quality 82) using sharp — 4 existing derivatives were skipped.
+- Extended `figmaMediaOverrides.haqimi.sequence` from 4 to 11 entries and added `postConclusionIndices: [4,5,6,7,8,9,10]` to mark the 7 new images as post-conclusion content.
+- Generalized the App.jsx post-conclusion rendering from a single `figmaPostConclusionIndex` to a unified `postConclusionSet` that accepts both the legacy single-index (Island for the Stateless) and the new array form (HaQimi). All post-conclusion chapters now render in a dedicated `.project-post-conclusion` section between the conclusion and the footer.
+- Added CSS for the 7 new images: `79.86%` width centered, `1150/647` aspect-ratio, `object-fit: cover`, `52px` inter-image gap, `36px` top gap after conclusion, `132px` bottom gap before footer. Adjusted HaQimi's conclusion height from `620px` to `388px` to match Figma. Added responsive mobile rules (full-width with 18px side margins, 24px gap).
+- Production build passed. Figma contract validation passed. Route audit passed `20/20`; content audit passed `14/14`; interaction audit confirmed entrance replay, direct-project bypass, gate, and Product Management index restoration all unchanged.
+- Matched-viewport (1440 × 1000) visual check: 12 DOM images (1 hero + 4 gallery + 7 post-conclusion), conclusion height `388px`, first post-conclusion image width `1149.97px`, aspect ratio `1.777` — all matching Figma exactly. Zero broken images, zero console errors, no horizontal overflow.
+
+#### Decisions and reusable learning
+
+- When Figma places images after the conclusion section, treat them as a dedicated post-conclusion gallery rather than appending them to the main gallery. This preserves the narrative structure (opening → statement → gallery → conclusion → post-conclusion) and keeps the conclusion as a clear narrative pivot.
+- The `figmaPostConclusionIndex` (singular) and `figmaPostConclusionIndices` (plural) fields coexist; the App.jsx `postConclusionSet` unifies both into a single set so the rendering logic stays the same regardless of count.
+- Figma layer names like "PPT_08 1", "PPT_08 2", "PPT_08 3" do not imply the same source image — each rectangle may carry a unique image hash. Always verify via `save_image_fills` and SHA-256 comparison before assuming source mapping.
+- No deployment was performed; the local review target remains `http://127.0.0.1:4174/projects/haqimi`.
+
+### S-040 · 2026-08-05 · Add Anti-Wastecolonialism as 4th project on Installation index
+
+#### Task goal and completion criteria
+
+- Goal: add the Figma project `I03 · Anti-Wastecolonialism · Full Detail` (node `114:2`) to the Installation index page (`02 · Installation Index`, node `106:2`) as the 4th project, with the grid layout referencing the Architecture index (`108:2`). User chose to append Anti-Wastecolonialism as the 4th card and renumber Three Body 04→03, Anti-Wastecolonialism 03→04, updating Figma to match.
+
+#### Completed and verified
+
+- Read the Installation index Figma frame (`106:2`) via design-to-code. The grid (`Gallery / Project Grid` `106:45`) is a 3-column × 2-row auto-layout grid (columnGap 52, rowGap 28, padding 54/54/0/40) — identical to the Architecture index grid. It held only 3 cards: Sisyphus (01), Cloud (02), Three Body (04); Anti-Wastecolonialism (03) was missing.
+- Exported the Anti-Wastecolonialism opening image (node `114:67`, imageHash `164114e6…`, 2381×1684 JPG) via `save_image_fills`, then generated a card asset `anti-wastecolonialism.webp` (1200×849, quality 84) with sharp and placed it in `public/figma-export/category/`.
+- Updated the Figma source of truth: renumbered the Three Body card instance (`295:180`) `Number#294:23` from `04` to `03` via `set_instance_properties`; created a new `Project Card / Anti-Wastecolonialism` instance (`440:280`) of component `294:220` inside the grid frame `106:45` and set its properties (Number `04`, Title `Anti-Wastecolonialism`, Metadata `2023 · Proposed for Harvard Yard`, Height `Regular`). The grid auto-placed it at row 2, column 1 (the 4th slot).
+- Known Figma gap: `set_fills` rejects `IMAGE` type (schema only allows SOLID + gradients), so the new card's image fill still shows the component default. The website is unaffected because card images are driven by `cardAssets` in `figma-sync.json`. The Figma card image needs a manual drag-in to fully match.
+- Updated `figma-sync.json`: added `anti-wastecolonialism` to `cardAssets`; renumbered `cardNumbers` (three-body→`03`, anti-wastecolonialism→`04`); extended `categoryFrames.installation.projects` to 4 entries and added `canvas` + `projectGrid` metadata matching Architecture (`top:311, columns:3, columnWidth:409, columnGap:52, rowHeight:313, rowGap:28`). No CSS change was needed — the shared `.category-project-grid` rule already renders a 3-column grid identical to Architecture.
+- Updated audit baselines: `route_audit.mjs` and `figma_capture_audit.mjs` Installation image counts 3→4.
+- Production build passed. Figma contract validation passed. Route audit `20/20`; content audit `14/14`; interaction audit confirmed entrance/gate/index-restoration behavior unchanged.
+- Matched-viewport (1440 × 1000) visual check: 4 cards — 01 Sisyphus (top 311, left 54), 02 Cloud (top 311, left 515), 03 Three Body (top 311, left 977), 04 Anti-Wastecolonialism (top 652, left 54). Grid: 3 cols × 409px, gap `28px 52px`, top 311 — identical to Architecture. All images complete, no errors, no overflow.
+
+#### Decisions and reusable learning
+
+- The category index grid layout is shared via a single CSS rule (`.category-project-grid`); Architecture and Installation render identically by default. "Reference Architecture layout" needed no CSS change — only the `projectGrid` metadata in `figma-sync.json` was recorded for contract completeness.
+- `set_fills` (figwright MCP) cannot apply `IMAGE` fills — its `type` enum is SOLID + gradients only. To set a card image in Figma via MCP, the only path is `import_image` (creates a new rectangle, not a fill on an existing node). For card-image fidelity in Figma, a manual drag-in remains necessary; the website side is fully automated through `cardAssets`.
+- Card numbering conflicts between user intent and prior Figma assignment must be confirmed before editing: here the user explicitly chose to renumber (Three Body 04→03, Anti-Wastecolonialism→04) rather than preserve the I03 label, so both Figma and `figma-sync.json` were updated together to stay in sync.
+- No deployment was performed; the local review target is `http://127.0.0.1:4174/installation`.
+
+### S-041 · 2026-08-06 · Sync HaQimi and Sisyphus video updates from Figma
+
+#### Task goal and completion criteria
+
+- Goal: sync `P02 · HaQimi · Full Detail` (node `371:268`) and `I01 · The Invisible Sisyphus · Part 01 / Opening + 01–02` (node `128:2`) from the latest Figma to the local website.
+- Completion criteria: all Figma-added media (videos) and structural changes reflected in code; production build passes; Sisyphus statement video plays; HaQimi video elements present with correct source paths.
+
+#### Completed and verified
+
+- **Sisyphus**: Figma node `128:2` added a new VIDEO rectangle `363:276` ("Installation-THE INVISIBLE SISYPHUS 1", 273×364) inside the Project Statement text block (`128:68`), placed left of the supporting copy. All 7 existing Sisyphus images verified unchanged via SHA-256 hash comparison (Figma exports vs `portfolio/interacation/invisible-sisyphus/` source files — all 7 MATCH). Local source file `Installation-THE   INVISIBLE   SISYPHUS.mp4` found in portfolio source and copied to `public/media/the-invisible-sisyphus/installation-the-invisible-sisyphus.mp4` (6.1 MB).
+- **HaQimi**: Figma node `371:268` added 2 new VIDEO rectangles: `433:280` ("微信视频2026-04-06_134103_883", 1143×643, y=5144, pre-conclusion) and `433:281` ("饭点...演示视频", 1150×647, y=11190, post-conclusion). All 7 post-conclusion images verified unchanged via SHA-256 hash comparison (Figma `save_image_fills` exports vs `portfolio/product management/Haqimi/` source files — all 7 MATCH, mapping to PPT_08-detail, PPT_06, PPT_08, PPT_09, PPT_10, PPT_12, PPT_13). No local video source files found for HaQimi.
+- Code changes: added `statementVideo` field to Sisyphus override; added `video` (pre-conclusion) and `postConclusionVideo` fields to HaQimi override; added `figmaStatementVideo` and `figmaPostConclusionVideo` to project mapping. Updated `App.jsx` to render statement video in project-intro section (replacing hero image when present) and post-conclusion video after post-conclusion images. Updated `styles.css` with `.project-intro__image--video`, `.project-page--haqimi .project-video`, and `.project-video--post-conclusion` rules (desktop + mobile).
+- Updated `figma-sync.json`: added `statementVideoNodeId`/`statementVideoSource` to Sisyphus; added `preConclusionVideoNodeId`/`preConclusionVideoSource`/`postConclusionVideoNodeId`/`postConclusionVideoSource` to HaQimi; updated `syncedAt`.
+- Production build passed. Browser validation: Sisyphus statement video confirmed playing (readyState 4, currentTime 10.6s/17.3s, 720×1280 portrait, no errors). HaQimi page: 2 video elements confirmed in DOM with correct sources and Figma node IDs; 7 post-conclusion images confirmed.
+
+#### Key decisions
+
+- `figmaVideo` (existing field, rendered between gallery and conclusion) is reused for HaQimi's pre-conclusion video — it maps to Figma node `433:280` which sits at exactly that position (between image 04 and conclusion).
+- A new `figmaPostConclusionVideo` field was added for HaQimi's post-conclusion video (`433:281`), rendered after the post-conclusion image section and before the footer.
+- `figmaStatementVideo` replaces `figmaIncludeHeroInIntro` rendering: when a statement video is present, the project-intro section renders a `<video>` instead of an `<img>`.
+- HaQimi video files (`haqimi-pre-conclusion.mp4`, `haqimi-post-conclusion.mp4`) are NOT available locally and cannot be exported from Figma via MCP (VIDEO fills not supported by `save_image_fills`). User confirmed they will provide the files. Code structure and CSS are ready; dropping the files into `public/media/haqimi/` will make them playable.
+
+#### Problem and effective solution
+
+- Problem: Figma `save_image_fills` failed with "Image dimensions not available" when called with all 7 HaQimi post-conclusion node IDs at once.
+- Effective solution: retrying with all 7 nodes succeeded on the second attempt. The first failure was likely a transient Figma API issue.
+- Problem: Figma node names for HaQimi post-conclusion images were misleading ("PPT_08 1/2/3", "PPT_12 1/2") suggesting duplicates, but SHA-256 hash comparison confirmed all 7 are distinct images (PPT_08-detail, PPT_06, PPT_08, PPT_09, PPT_10, PPT_12, PPT_13) — exactly matching the existing website sequence.
+- Effective solution: always verify image content via hash comparison rather than trusting Figma node names.
+
+#### Unresolved
+
+- HaQimi video files (`public/media/haqimi/haqimi-pre-conclusion.mp4` and `haqimi-post-conclusion.mp4`) need to be provided by the user and placed in the correct directory.
+
+### S-042 · 2026-08-06 · Re-sync Open Sport, HaQimi, and Three Body detail frames
+
+#### Task goal and completion criteria
+
+- Goal: translate the current authoritative Figma detail frames `371:298` (Open Sport IMU), `371:268` (HaQimi), and `116:2` (Three Body) into the retained local React website.
+- Completion criteria: local media order, repeated-image rules, section geometry, and copy follow the three current Figma frames; obsolete local-only media is removed; all website video elements decode and advance during browser playback; existing entrance/category motion and the global default-muted rule remain unchanged; contract, production build, route/content, and matched-viewport checks pass.
+
+#### Completed and verified
+
+- Re-read the current Figma frames through design-to-code and programmatic node inspection. Open Sport `371:298` now renders four unique sources (opening plus nodes `371:310`, `371:311`, `371:312`); the obsolete local-only `05-uxui` board is no longer rendered.
+- Preserved HaQimi `371:268` as opening + four boards + video `433:280` + conclusion + seven post-conclusion boards + video `433:281`. Added intrinsic aspect-ratio reservations so lazy media cannot collapse the layout before entering the viewport.
+- Verified Three Body image fills by SHA-256 against local source files: node `357:526` maps to `Product Management-HUA FAN2_11.jpg`; opening node `116:67` and repeated node `357:527` map to `_12.jpg`. The obsolete `_10` board is no longer rendered.
+- Matched 1440px Figma geometry within 1px: Open Sport total height `5586` vs `5587`; HaQimi video y positions `5143.97` and `11189.72`, footer y `11888.69`, total height `12149`; Three Body statement y `1036`, gallery y `2566.19` / `3621.19`, conclusion y `4676.19`, footer y `5630.59`, total height `6851`.
+- Real browser playback audit passed for all four current website videos: both HaQimi videos and both Invisible Sisyphus videos returned MP4 range responses (`206`), decoded to non-zero frame dimensions at `readyState 4`, remained muted/autoplay/loop/inline with controls, and advanced by more than 0.5 seconds without media or console errors.
+- Figma contract validation and production build passed. Content audit passed `14/14`; route audit passed `20/20` with no broken images, console errors, or horizontal overflow. Existing entrance/category motion and global audio-disabled state were not changed.
+- Dedicated `390 × 844` mobile checks passed for all three updated routes: expected image/video counts, zero broken images, zero console errors, no horizontal overflow, and no leaked desktop fixed-height rules.
+
+#### Reusable learning
+
+- Figma vertical rhythm must be reserved before lazy images load. Explicit aspect ratios prevent a long page from collapsing and causing videos or conclusions to appear thousands of pixels too early.
+- Figma may intentionally reuse one image hash in the opening and gallery. Compare raw asset hashes instead of inferring sequence from local filenames.
+- No deployment was performed. The retained local review target is `http://127.0.0.1:4174/`.
+
+### S-043 · 2026-08-06 · Correct Open Sport boards from the current Figma frame
+
+#### Task goal and completion criteria
+
+- Goal: revalidate `P01 · Open Sport IMU · Full Detail` (Figma node `371:298`) and correct the local Open Sport page without interrupting the retained local preview.
+- Completion criteria: use the current Figma frame’s 01/02/03/04 structure, replace obsolete local boards with the newly supplied research, functional-positioning, and data/model boards, preserve all other site behavior, and verify the production build plus the retained local route.
+
+#### Current result
+
+- Re-read authoritative Figma node `371:298`. Its 02/03/04 layers remain the research, functional-positioning, and data/model boards shown in the user’s review image.
+- Found the local implementation still selected the older July WebP boards. The current 6 August source boards were added to the web asset tree and the Open Sport sequence now selects them in Figma order, without touching the opening, motion, audio, or any other route.
+- Verification is temporarily blocked: the local production build requires the environment’s elevated process permission, which is currently unavailable due to the account usage limit. The running `127.0.0.1:4174` preview was deliberately left untouched and therefore still serves the last successful build until that permission is available.
+
+### S-044 — 2026-08-06 — Prepare an unlisted Vercel review deployment
+
+#### Task goal and completion criteria
+
+- Goal: publish the current portfolio revision to the GitHub `main` branch and create a shareable Vercel preview that search engines are explicitly instructed not to index.
+- Completion criteria: the deployed build carries page-level and server-level no-index directives, all crawlers are disallowed through `robots.txt`, client-side routes remain available, and the exact deployed URL is recorded after deployment.
+
+#### Decision
+
+- The review release uses an unlisted Vercel preview URL plus three independent anti-indexing signals: HTML `robots`/`googlebot` meta tags, `public/robots.txt`, and a Vercel `X-Robots-Tag` response header applied to every path.
+- This prevents intentional search indexing but is not access control: anyone who receives the URL can open and redistribute it. Future public release requires removing these three directives and deploying to production.

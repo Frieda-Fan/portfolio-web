@@ -3,7 +3,7 @@ import { Link, Navigate, Route, Routes, useLocation, useNavigate, useParams } fr
 import { flushSync } from "react-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { projectBySlug, projects, projectsByCategory } from "./data/projects";
+import { projectBySlug, projectsByCategory } from "./data/projects";
 import { figmaSync, syncedCategories, useFigmaSync } from "./figmaSync";
 import { soundEngine } from "./audio/soundEngine";
 import magicPattern from "../web-assets/interacation/invisible-sisyphus/pattern-design-transparent.png";
@@ -267,9 +267,23 @@ function ProjectPage() {
   const { slug } = useParams();
   const project = projectBySlug.get(slug);
   const root = useRef(null);
-  const projectIndex = projects.findIndex((item) => item.slug === slug);
-  const previous = projects[(projectIndex - 1 + projects.length) % projects.length];
-  const next = projects[(projectIndex + 1) % projects.length];
+  const productSequence = ["open-sport-imu", "haqimi", "brain-memory", "human-head-model-system"];
+  const spatialSequence = [
+    "folded-courtyard",
+    "island-for-the-stateless",
+    "infinitas-hotel",
+    "countryside-introduction-planning",
+    "trojan-forest",
+    "s-o-s",
+    "the-invisible-sisyphus",
+    "the-cloud",
+    "anti-wastecolonialism",
+    "three-body",
+  ];
+  const navigationSequence = project?.category === "product-management" ? productSequence : spatialSequence;
+  const projectIndex = navigationSequence.indexOf(slug);
+  const previous = projectBySlug.get(navigationSequence[(projectIndex - 1 + navigationSequence.length) % navigationSequence.length]);
+  const next = projectBySlug.get(navigationSequence[(projectIndex + 1) % navigationSequence.length]);
   const captureMode = isFigmaCapture();
   const captureParams = new URLSearchParams(window.location.search);
   const captureStart = Number(captureParams.get("captureStart"));
@@ -329,39 +343,80 @@ function ProjectPage() {
 
   if (!project) return <Navigate to="/" replace />;
   const isLight = project.theme === "ivory";
-  const postConclusionChapter = project.figmaPostConclusionIndex == null
-    ? null
-    : chapters.find((chapter) => chapter.sourceIndex === project.figmaPostConclusionIndex);
+  const isProductManagement = project.category === "product-management";
+  const projectNumber = figmaSync.designSource?.cardNumbers?.[project.slug];
+  const heroImageStyle = project.figmaHeroCrop ? {
+    "--hero-left": project.figmaHeroCrop.left,
+    "--hero-top": project.figmaHeroCrop.top,
+    "--hero-width": project.figmaHeroCrop.width,
+    "--hero-height": project.figmaHeroCrop.height,
+  } : undefined;
+  const postConclusionSet = new Set(
+    project.figmaPostConclusionIndices
+    ?? (project.figmaPostConclusionIndex != null ? [project.figmaPostConclusionIndex] : [])
+  );
+  const postConclusionChapters = chapters
+    .filter((chapter) => postConclusionSet.has(chapter.sourceIndex))
+    .sort((a, b) => a.sourceIndex - b.sourceIndex);
   const galleryChapters = chapters
-    .filter((chapter) => project.editorialCover || project.figmaMediaLayout === "product-case" || chapter.sourceIndex !== 0)
-    .filter((chapter) => chapter.sourceIndex !== project.figmaPostConclusionIndex);
+    .filter((chapter) => project.editorialCover
+      || project.figmaIncludeOpeningInGallery
+      || chapter.sourceIndex !== 0)
+    .filter((chapter) => !postConclusionSet.has(chapter.sourceIndex));
   const visibleChapters = rangedCapture ? galleryChapters.slice(captureStart, captureEnd) : galleryChapters;
   const showOpening = !rangedCapture || captureStart === 0;
   const showClosing = !rangedCapture || captureEnd >= galleryChapters.length;
 
   return (
-    <main ref={root} className={classNames("project-page", `project-page--${project.slug}`, isLight ? "theme-ivory" : "theme-dark")}>
+    <main
+      ref={root}
+      className={classNames("project-page", `project-page--${project.slug}`, isLight ? "theme-ivory" : "theme-dark")}
+      style={project.figmaAccent ? { "--project-accent": project.figmaAccent } : undefined}
+    >
       <SiteChrome light={isLight} />
       {showOpening ? <><section className="project-hero">
         <div className="project-hero__copy">
-          <MotionLink className="back-link" to={`/${project.category}`}>← {syncedCategories[project.category].label}</MotionLink>
+          <MotionLink className="back-link" to={`/${project.category}`}>
+            {isProductManagement ? `Product Management · ${projectNumber}` : `← ${syncedCategories[project.category].label}`}
+          </MotionLink>
           {project.kicker ? <p className="eyebrow">{project.kicker}</p> : null}
           <h1>{project.figmaDisplayTitle ?? project.title}</h1>
           <p className="project-subtitle">{project.subtitle}</p>
-          <dl>
-            <div><dt>Year</dt><dd>{project.year}</dd></div>
-            <div><dt>Location</dt><dd>{project.location}</dd></div>
-            <div><dt>Type</dt><dd>{project.type}</dd></div>
+          <dl style={project.figmaHeroMetaTop ? { "--hero-meta-top": project.figmaHeroMetaTop } : undefined}>
+            {(project.figmaMeta ?? [
+              ["Year", project.year],
+              ["Location", project.location],
+              ["Type", project.type],
+            ]).map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
           </dl>
         </div>
         <figure className="project-hero__media">
-          <img src={project.coverImage} alt={`${project.title} — opening image`} />
+          <img
+            className={project.figmaHeroCrop ? "project-hero__image--figma-crop" : undefined}
+            style={heroImageStyle}
+            src={project.coverImage}
+            alt={`${project.title} — opening image`}
+          />
           {project.editorialDisclosure ? <figcaption>{project.editorialDisclosure}</figcaption> : null}
         </figure>
       </section>
       <section className="project-intro">
         <p className="eyebrow">Project statement</p>
         <h2>{project.summary}</h2>
+        {project.figmaIncludeHeroInIntro ? (
+          project.figmaStatementVideo ? (
+            <figure className="project-intro__image project-intro__image--video" data-figma-node-id={project.figmaStatementVideo.figmaNodeId}>
+              <video autoPlay muted loop playsInline controls preload="metadata" aria-label={project.figmaStatementVideo.label}>
+                <source src={project.figmaStatementVideo.src} type="video/mp4" />
+                Your browser does not support embedded MP4 video.
+              </video>
+            </figure>
+          ) : (
+            <figure className="project-intro__image">
+              <img src={project.coverImage} alt="" aria-hidden="true" />
+            </figure>
+          )
+        ) : null}
         <div className="project-intro__body">
           {project.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
@@ -408,18 +463,46 @@ function ProjectPage() {
           </figure>
         ))}
       </section>
+      {project.figmaVideo ? (
+        <figure className="project-video" data-figma-node-id={project.figmaVideo.figmaNodeId}>
+          <video autoPlay muted loop playsInline controls preload="metadata" aria-label={project.figmaVideo.label}>
+            <source src={project.figmaVideo.src} type="video/mp4" />
+            Your browser does not support embedded MP4 video.
+          </video>
+        </figure>
+      ) : null}
       {showClosing ? <><section className="project-conclusion">
         <p className="eyebrow">Project conclusion</p>
         <h2>{project.conclusion}</h2>
       </section>
-      {postConclusionChapter ? (
-        <figure className="project-closing-media project-closing-media--island">
-          <img
-            loading={captureMode ? "eager" : "lazy"}
-            decoding="async"
-            src={postConclusionChapter.media[0].url}
-            alt={`${project.title}: ${postConclusionChapter.title}`}
-          />
+      {postConclusionChapters.length > 0 ? (
+        <section className="project-post-conclusion">
+          {postConclusionChapters.map((chapter, index) => (
+            <figure
+              className={classNames(
+                "project-closing-media",
+                project.slug === "island-for-the-stateless" && "project-closing-media--island",
+                project.slug === "haqimi" && "project-closing-media--haqimi",
+                project.slug === "haqimi" && `project-closing-media--haqimi-${index}`,
+              )}
+              key={`${chapter.media[0].url}-${index}`}
+            >
+              <img
+                loading={captureMode ? "eager" : "lazy"}
+                decoding="async"
+                src={chapter.media[0].url}
+                alt={`${project.title}: ${chapter.title}`}
+              />
+            </figure>
+          ))}
+        </section>
+      ) : null}
+      {project.figmaPostConclusionVideo ? (
+        <figure className="project-video project-video--post-conclusion" data-figma-node-id={project.figmaPostConclusionVideo.figmaNodeId}>
+          <video autoPlay muted loop playsInline controls preload="metadata" aria-label={project.figmaPostConclusionVideo.label}>
+            <source src={project.figmaPostConclusionVideo.src} type="video/mp4" />
+            Your browser does not support embedded MP4 video.
+          </video>
         </figure>
       ) : null}
       <footer className="project-footer">
@@ -454,8 +537,8 @@ function AboutPage() {
         </div>
         <div className="about-biography">
           <p>
-            Frieda Fan is a spatial designer and product thinker working across product management,
-            architecture, landscape, installation, and visual communication. She holds a Bachelor of Architecture
+            Frieda Fan is a spatial designer working across architecture, landscape, installation,
+            and visual communication. She holds a Bachelor of Architecture
             with a minor in Finance from Beijing University of Technology and is pursuing
             the MLA I AP program at Harvard Graduate School of Design.
           </p>
@@ -476,7 +559,7 @@ function AboutPage() {
         </ol>
       </section>
       <footer className="about-footer">
-        <p>Product Management · Architecture · Landscape · Installation</p>
+        <p>Architecture · Landscape · Installation</p>
         <MotionLink to="/">Return to the index →</MotionLink>
       </footer>
     </main>

@@ -7,11 +7,11 @@ const routes = [
   { path: "/product-management", main: "category-page", images: 4, category: true },
   { path: "/architecture", main: "category-page", images: 4, category: true },
   { path: "/landscape", main: "category-page", images: 2, category: true },
-  { path: "/installation", main: "category-page", images: 3, category: true },
-  { path: "/projects/haqimi", main: "project-page", images: 5 },
-  { path: "/projects/open-sport-imu", main: "project-page", images: 6 },
-  { path: "/projects/brain-memory", main: "project-page", images: 7 },
-  { path: "/projects/human-head-model-system", main: "project-page", images: 4 },
+  { path: "/installation", main: "category-page", images: 4, category: true },
+  { path: "/projects/haqimi", main: "project-page", images: 12 },
+  { path: "/projects/open-sport-imu", main: "project-page", images: 4 },
+  { path: "/projects/brain-memory", main: "project-page", images: 5 },
+  { path: "/projects/human-head-model-system", main: "project-page", images: 3 },
   { path: "/projects/folded-courtyard", main: "project-page", images: 10 },
   { path: "/projects/island-for-the-stateless", main: "project-page", images: 7 },
   { path: "/projects/infinitas-hotel", main: "project-page", images: 14 },
@@ -21,7 +21,7 @@ const routes = [
   { path: "/projects/the-invisible-sisyphus", main: "project-page", images: 8 },
   { path: "/projects/the-cloud", main: "project-page", images: 5 },
   { path: "/projects/anti-wastecolonialism", main: "project-page", images: 6 },
-  { path: "/projects/three-body", main: "project-page", images: 4 },
+  { path: "/projects/three-body", main: "project-page", images: 3 },
 ];
 
 const browser = await chromium.launch({

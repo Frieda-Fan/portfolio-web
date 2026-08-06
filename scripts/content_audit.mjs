@@ -1,10 +1,10 @@
 import { chromium } from "playwright";
 
 const projects = [
-  ["haqimi", 5],
-  ["open-sport-imu", 6],
-  ["brain-memory", 7],
-  ["human-head-model-system", 4],
+  ["haqimi", 12],
+  ["open-sport-imu", 4],
+  ["brain-memory", 5],
+  ["human-head-model-system", 3],
   ["folded-courtyard", 10],
   ["island-for-the-stateless", 7],
   ["infinitas-hotel", 14],
@@ -14,8 +14,9 @@ const projects = [
   ["the-invisible-sisyphus", 8],
   ["the-cloud", 5],
   ["anti-wastecolonialism", 6],
-  ["three-body", 4],
+  ["three-body", 3],
 ];
+const productSlugs = new Set(["haqimi", "open-sport-imu", "brain-memory", "human-head-model-system"]);
 
 const browser = await chromium.launch({
   headless: true,
@@ -51,10 +52,11 @@ for (const [slug, expectedImages] of projects) {
     placeholderText: /lorem|placeholder|to be confirmed|\btbd\b/i.test(main.textContent),
   }));
 
+  const isProductManagement = productSlugs.has(slug);
   const passed = facts.title.length > 0
-    && facts.metadataRows === 3
+    && facts.metadataRows === (isProductManagement ? 2 : 3)
     && facts.statement.length > 60
-    && facts.overviewParagraphs >= 3
+    && facts.overviewParagraphs >= (isProductManagement ? 1 : 3)
     && facts.conclusion.length > 80
     && facts.footerLinks === 3
     && facts.images === expectedImages

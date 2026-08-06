@@ -8,9 +8,9 @@ const browser = await chromium.launch({
 const checks = [];
 const cases = [
   { route: "/?capture=1", expectedClass: "home", expectedImages: 1 },
-  { route: "/installation?capture=1&leaf=2", expectedClass: "category-page", expectedImages: 3, text: "Three Body" },
+  { route: "/installation?capture=1&leaf=2", expectedClass: "category-page", expectedImages: 4, text: "Three Body" },
   { route: "/projects/folded-courtyard?capture=1", expectedClass: "project-page theme-ivory", expectedImages: 79 },
-  { route: "/projects/three-body?capture=1", expectedClass: "project-page theme-dark", expectedImages: 7, text: "AI-generated editorial interpretation" },
+  { route: "/projects/three-body?capture=1", expectedClass: "project-page theme-dark", expectedImages: 3, text: "Three Body" },
 ];
 
 for (const testCase of cases) {
