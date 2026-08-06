@@ -1,11 +1,11 @@
 const sourceImages = import.meta.glob(
-  "../../web-assets/{product-management,architecture,landscape,interacation}/**/*.{webp,png}",
+  "../../web-assets/{product-management,architecture,landscape,interacation}/**/*.{webp,png,jpg,jpeg}",
   { eager: true, query: "?url", import: "default" },
 );
 
 const imageStem = (path) =>
   decodeURIComponent(path.split("/").at(-1))
-    .replace(/\.(?:webp|png)$/i, "")
+    .replace(/\.(?:webp|png|jpe?g)$/i, "")
     .toLocaleLowerCase();
 
 const imagesFor = (
@@ -423,31 +423,6 @@ const rawProjects = [
     sections: ["A Cloud That Breathes", "Illness as Spatial Experience", "From Image to Space", "Airflow and Weak Motion", "Light as a Pulse", "Sensing the Audience", "Sound, Scent, Vapor, and Memory", "A Time-Lapse of Presence"],
   },
   {
-    slug: "anti-wastecolonialism",
-    folder: "interacation/anti-wastecolonialism",
-    category: "installation",
-    title: "Anti-Wastecolonialism",
-    subtitle: "A bionic installation made from domestic waste",
-    year: "2023",
-    location: "Proposed for Harvard Yard",
-    type: "Individual work",
-    theme: "dark",
-    coverHint: "74f272ba7a378d925e79c965e52a34d",
-    imageSequence: ["a552b4623ee1288d0ff8abb88cb723d", "ae59a7df2570cf6222d4f8b3e9ce004", "fca8a05f8caaf7e257b63515aa701b6", "fca9fd803c0dd8a5a4ff447ae6d4243"],
-    matrixRules: [
-      { includes: ["a552", "ae59", "fca8", "fca9"], columns: 2, chunk: 4, title: "Material, Assembly, and Response" },
-    ],
-    summary:
-      "Anti-Wastecolonialism transforms discarded domestic material into light-responsive, bionic installations. The work links the unequal geography of exported waste to a public act of collection and making.",
-    overview: [
-      "Developed countries export large quantities of waste to developing regions, hiding failures in waste-management systems and transferring environmental harm.",
-      "The project uses domestic waste to ask viewers to reconsider where waste goes and who is made to live with it.",
-      "Infrared sensors and solar-powered lights allow the objects to respond when pedestrians approach at night.",
-    ],
-    conclusion: "By returning discarded material to a visible public encounter, Anti-Wastecolonialism resists the distance on which waste export depends. The responsive objects make disposal spatial, political, and difficult to ignore.",
-    sections: ["Waste Moves Across Borders", "The Hidden Geography of Recycling", "Collecting on Campus", "A Bionic Waste Body", "Material Assembly", "Anchoring in Harvard Yard", "Sensing the Pedestrian", "Waste Becomes Visible"],
-  },
-  {
     slug: "three-body",
     folder: "interacation/three-body",
     category: "installation",
@@ -483,13 +458,13 @@ const figmaMediaOverrides = {
       "product management-hua fan2_07",
       "product management-hua fan2_08",
       "product management-hua fan2_09",
-      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_08-detail",
-      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_06",
-      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_08",
-      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_09",
-      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_10",
-      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_12",
-      "haqimi智驾气味相册-饭点的味道是什么-初选ppt_13",
+      "figma-ppt08-3",
+      "figma-ppt08-2",
+      "figma-ppt08-1",
+      "figma-ppt09-1",
+      "figma-ppt10-1",
+      "figma-ppt12-1",
+      "figma-ppt12-2",
     ],
     layout: "product-case",
     includeOpeningInGallery: true,
@@ -634,6 +609,7 @@ const figmaMediaOverrides = {
   },
   "the-invisible-sisyphus": {
     sequence: ["portfolio-frieda fan (2)_03", "portfolio-frieda fan (2)_04", "portfolio-frieda fan (2)_05", "portfolio-frieda fan (2)_06", "portfolio-frieda fan (2)_07", "portfolio-frieda fan (2)_08", "portfolio-frieda fan (2)_09"],
+    includeCoverInMedia: false,
     heroCrop: { left: "0.09%", top: "-12.36%", width: "184.91%", height: "118.89%" },
     includeHeroInIntro: true,
     statementVideo: {
@@ -651,11 +627,18 @@ const figmaMediaOverrides = {
     sequence: ["portfolio-frieda fan (2)_10", "portfolio-frieda fan (2)_11", "portfolio-frieda fan (2)_12", "portfolio-frieda fan (2)_13"],
   },
   "three-body": {
-    sequence: ["product management-hua fan2_11", "product management-hua fan2_12"],
+    sequence: ["figma-three-body-02", "figma-three-body-03"],
     includeCoverInMedia: false,
-    heroHint: "product management-hua fan2_12",
+    heroHint: "figma-three-body-03",
     includeOpeningInGallery: true,
     disableEditorialCover: true,
+    includeHeroInIntro: true,
+    layout: "full-width",
+    statementVideo: {
+      src: "/media/three-body/three-body-statement.mp4",
+      label: "Three Body installation",
+      figmaNodeId: "448:288",
+    },
   },
 };
 

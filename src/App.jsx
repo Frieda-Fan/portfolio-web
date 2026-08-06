@@ -277,7 +277,6 @@ function ProjectPage() {
     "s-o-s",
     "the-invisible-sisyphus",
     "the-cloud",
-    "anti-wastecolonialism",
     "three-body",
   ];
   const navigationSequence = project?.category === "product-management" ? productSequence : spatialSequence;

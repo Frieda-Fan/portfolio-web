@@ -44,7 +44,6 @@
       "s-o-s": "02",
       "the-invisible-sisyphus": "01",
       "the-cloud": "02",
-      "anti-wastecolonialism": "04",
       "three-body": "03"
     },
     "projectTypography": {
@@ -135,7 +134,7 @@
       },
       "installation": {
         "nodeId": "106:2",
-        "projects": ["the-invisible-sisyphus", "the-cloud", "three-body", "anti-wastecolonialism"],
+        "projects": ["the-invisible-sisyphus", "the-cloud", "three-body"],
         "canvas": { "width": 1440, "height": 1008 },
         "projectGrid": { "top": 311, "columns": 3, "columnWidth": 409, "columnGap": 52, "rowHeight": 313, "rowGap": 28 }
       }
@@ -151,7 +150,6 @@
       "countryside-introduction-planning": ["112:2"],
       "trojan-forest": ["118:2", "121:2", "120:2", "117:2"],
       "s-o-s": ["109:2"],
-      "anti-wastecolonialism": ["114:2"],
       "the-cloud": ["115:2"],
       "three-body": ["116:2"],
       "the-invisible-sisyphus": ["128:2", "127:2", "131:2", "132:2", "130:2"]
