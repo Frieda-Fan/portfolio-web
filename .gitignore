@@ -32,3 +32,10 @@ portfolio/**
 Thumbs.db
 *.swp
 *.swo
+
+# Local tooling (Trae IDE / Figwright plugin install)
+.trae/
+figwright-plugin/
+
+# Sharp compression temp files
+**/*.__tmp.webp

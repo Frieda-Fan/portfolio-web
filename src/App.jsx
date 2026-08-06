@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { projectBySlug, projectsByCategory } from "./data/projects";
 import { figmaSync, syncedCategories, useFigmaSync } from "./figmaSync";
 import { soundEngine } from "./audio/soundEngine";
-import magicPattern from "../web-assets/interacation/invisible-sisyphus/pattern-design-transparent.png";
+import magicPattern from "../web-assets/interacation/invisible-sisyphus/pattern-design-transparent.webp";
 
 gsap.registerPlugin(useGSAP);
 
@@ -246,7 +246,7 @@ function CategoryPage() {
             {items.map((project, index) => (
               <MotionLink className={classNames("project-sigil", `project-sigil--${project.slug}`)} key={project.slug} to={`/projects/${project.slug}`} onClick={() => soundEngine.projectOpen()}>
                 <div className="project-sigil__image">
-                  <img src={figmaSync.designSource?.cardAssets?.[project.slug] ?? project.coverImage} alt="" />
+                  <img loading="lazy" decoding="async" src={figmaSync.designSource?.cardAssets?.[project.slug] ?? project.coverImage} alt="" />
                   <span>
                     {figmaSync.designSource?.cardNumbers?.[project.slug] ??
                       String(index + 1).padStart(2, "0")}
@@ -412,7 +412,7 @@ function ProjectPage() {
             </figure>
           ) : (
             <figure className="project-intro__image">
-              <img src={project.coverImage} alt="" aria-hidden="true" />
+              <img loading="lazy" decoding="async" src={project.coverImage} alt="" aria-hidden="true" />
             </figure>
           )
         ) : null}
