@@ -246,7 +246,7 @@ function CategoryPage() {
             {items.map((project, index) => (
               <MotionLink className={classNames("project-sigil", `project-sigil--${project.slug}`)} key={project.slug} to={`/projects/${project.slug}`} onClick={() => soundEngine.projectOpen()}>
                 <div className="project-sigil__image">
-                  <img loading="lazy" decoding="async" src={figmaSync.designSource?.cardAssets?.[project.slug] ?? project.coverImage} alt="" />
+                  <img loading={index < 2 ? "eager" : "lazy"} decoding="async" src={figmaSync.designSource?.cardAssets?.[project.slug] ?? project.coverImage} alt="" />
                   <span>
                     {figmaSync.designSource?.cardNumbers?.[project.slug] ??
                       String(index + 1).padStart(2, "0")}
@@ -412,7 +412,7 @@ function ProjectPage() {
             </figure>
           ) : (
             <figure className="project-intro__image">
-              <img loading="lazy" decoding="async" src={project.coverImage} alt="" aria-hidden="true" />
+              <img loading="eager" decoding="async" fetchpriority="high" src={project.coverImage} alt="" aria-hidden="true" />
             </figure>
           )
         ) : null}
